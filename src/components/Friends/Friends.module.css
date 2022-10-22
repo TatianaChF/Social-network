@@ -1,0 +1,31 @@
+.friends {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 350px);
+    grid-row-gap: 30px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+}
+
+.name {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    padding: 4px 0;
+    align-self: center;
+    order: 0;
+    flex: 0 1 auto;
+    flex-basis: 30%;
+    color: black;
+    text-decoration: none;
+}
+
+.name:hover {
+    color: darkcyan;
+}

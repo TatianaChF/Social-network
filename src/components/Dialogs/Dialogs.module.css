@@ -1,0 +1,36 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems {
+    padding: 10px;
+    color: white;
+}
+
+.dialogsItems .active {
+    color: white;
+}
+
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.messages {
+    display: grid;
+    grid-template-rows: repeat(3, 60px);
+    grid-template-columns: 600px 200px;
+    grid-row-gap: 20px;
+    padding: 10px;
+    background-color: lightgray;
+}
+
+textarea {
+    width: 500px;
+}
+
+.addMessage {
+    margin-left: -600px;
+    margin-top: 80px;
+}
