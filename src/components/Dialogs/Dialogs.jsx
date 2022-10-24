@@ -34,11 +34,19 @@ const Dialogs = (props) => {
                 { dialogsElement }
             </div>
             <div className={style.messages}>
-                { messagesElements }
+                <div>{messagesElements}</div>
+                <div>
+                    <div>
+                        <textarea placeholder="Enter your message..."
+                                  onChange={ onMessageChange }
+                                  ref={ addNewMessage } value={ props.data.newMessageText } ></textarea>
+                    </div>
+                    <div>
+                        <button onClick={ addMessage }>Send</button>
+                    </div>
+                </div>
                 <div className={style.addMessage}>
-                    <textarea onChange={ onMessageChange }
-                        ref={ addNewMessage } value={ props.data.newMessageText } ></textarea>
-                    <button onClick={ addMessage }>Add message</button>
+
                 </div>
             </div>
 
