@@ -26,7 +26,7 @@ let store = {
                 { id: 2, message: "How are you?" },
                 { id: 3, message: "Yo" }
             ],
-            newMessageText: "Add new message!",
+            newMessageText: "",
         },
         friendsPage: [
             { id: 1, name: "Alexander", avatar: "https://i.insider.com/61d1c0e2aa741500193b2d18?width=700" },
