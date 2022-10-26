@@ -1,7 +1,7 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
-const dialogsReducer = (state, action) => {
+export const dialogsReducer = (state, action) => {
 
     if(action.type === ADD_MESSAGE) {
         let newMessage = {

@@ -1,4 +1,4 @@
-const friendsReducer = (state, action) => {
+export const friendsReducer = (state, action) => {
 
     return state;
 }
