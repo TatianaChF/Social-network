@@ -1,5 +1,14 @@
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import friendsReducer from "./friends-reducer";
 
-let store = createStore();
+let reducers = combineReducers({
+    profilePage: profileReducer,
+    dialogsPage: dialogsReducer,
+    friendsPage: friendsReducer
+});
+
+let store = createStore(reducers);
 
 export default store;
