@@ -9,7 +9,7 @@ let initialState = {
     newPostText: "Hello everyone!"
 };
 
-const profileReducer = (state, action) => {
+const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_POST:
