@@ -59,7 +59,7 @@ let store = {
         } else if(action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPost;
             this._callSubscriber(this._state);
-        } else if(action.type === 'ADD-MESSAGE') {
+        } else if(action.type === ADD_MESSAGE) {
             let newMessage = {
                 id: 4,
                 message: this._state.dialogsPage.newMessageText
@@ -67,7 +67,7 @@ let store = {
             this._state.dialogsPage.messagesData.push(newMessage);
             this._state.dialogsPage.newMessageText = '';
             this._callSubscriber(this._state);
-        } else if(action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+        } else if(action.type === UPDATE_NEW_MESSAGE_TEXT) {
             this._state.dialogsPage.newMessageText = action.newMessage;
             this._callSubscriber(this._state);
         }
