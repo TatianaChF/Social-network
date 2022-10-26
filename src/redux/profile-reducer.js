@@ -9,12 +9,10 @@ const profileReducer = (state, action) => {
             message: this._state.profilePage.newPostText,
             likesCount: 0
         };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
+        state.posts.push(newPost);
+        state.newPostText = '';
     } else if(action.type === UPDATE_NEW_POST_TEXT) {
-        this._state.profilePage.newPostText = action.newPost;
-        this._callSubscriber(this._state);
+        state.newPostText = action.newPost;
     }
 
     return state;

@@ -8,12 +8,10 @@ const dialogsReducer = (state, action) => {
             id: 4,
             message: this._state.dialogsPage.newMessageText
         };
-        this._state.dialogsPage.messagesData.push(newMessage);
-        this._state.dialogsPage.newMessageText = '';
-        this._callSubscriber(this._state);
+        state.messagesData.push(newMessage);
+        state.newMessageText = '';
     } else if(action.type === UPDATE_NEW_MESSAGE_TEXT) {
-        this._state.dialogsPage.newMessageText = action.newMessage;
-        this._callSubscriber(this._state);
+        state.newMessageText = action.newMessage;
     }
 
     return state;
