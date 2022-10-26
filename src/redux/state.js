@@ -51,9 +51,9 @@ let store = {
     },
 
     dispatch(action) {
-        profileReducer(this._state.profilePage, action);
-        dialogsReducer(this._state.dialogsPage, action);
-        friendsReducer(this._state.friendsPage, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.friendsPage = friendsReducer(this._state.friendsPage, action);
 
         if(action.type === ADD_POST) {
             let newPost = {
