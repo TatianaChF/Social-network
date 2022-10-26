@@ -6,7 +6,7 @@ const dialogsReducer = (state, action) => {
     if(action.type === ADD_MESSAGE) {
         let newMessage = {
             id: 4,
-            message: this._state.dialogsPage.newMessageText
+            message: state.newMessageText
         };
         state.messagesData.push(newMessage);
         state.newMessageText = '';
