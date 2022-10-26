@@ -10,7 +10,7 @@ import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
 
 const App = (props) => {
-
+    debugger;
   return (
           <div className="app-wrapper">
               <Header />
