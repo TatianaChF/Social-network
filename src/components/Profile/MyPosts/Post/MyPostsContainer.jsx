@@ -2,8 +2,9 @@ import React from "react";
 import style from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
+import MyPosts from "../MyPosts";
 
-const MyPosts = (props) => {
+const MyPostsContainer = (props) => {
 
     let postsElement = props.posts.map( post => <Post message={post.message} like_count={post.likesCount} /> )
 
@@ -22,23 +23,8 @@ const MyPosts = (props) => {
     }
 
     return (
-            <div className={style.postsBlock}>
-                <h3>My posts</h3>
-                <div>
-                    <div>
-                        <textarea onChange={ onPostChange }
-                                  ref={ newPostElement }
-                                  value={props.newPost}></textarea>
-                    </div>
-                    <div>
-                        <button onClick={ addPost }>Add post</button>
-                    </div>
-                </div>
-                <div className={style.posts}>
-                    { postsElement }
-                </div>
-            </div>
+            <MyPosts />
     )
 }
 
-export default MyPosts;
+export default MyPostsContainer;
