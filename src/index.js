@@ -9,11 +9,10 @@ import {BrowserRouter} from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let rerenderTree = (state) => {
-    debugger;
     root.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={ state } dispatch={store.dispatch.bind(store)} />
+                <App store={ state } dispatch={store.dispatch.bind(store)} />
             </BrowserRouter>
         </React.StrictMode>
     );
