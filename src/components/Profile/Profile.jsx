@@ -7,9 +7,10 @@ debugger;
     return (
         <div>
             <ProfileInfo />
-            <MyPostsContainer store={props.store} />
+            <MyPostsContainer />
         </div>
     )
 }
 
+// store={props.store}
 export default Profile;
