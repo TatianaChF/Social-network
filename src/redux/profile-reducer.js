@@ -19,6 +19,7 @@ const profileReducer = (state = initialState, action) => {
                 likesCount: 0
             };
             let stateCopy = {...state};
+            stateCopy.posts = [...state.posts];
             state.posts.push(newPost);
             state.newPostText = '';
             return state;
