@@ -1,3 +1,5 @@
+import styles from "./Users.module.css";
+
 const Users = (props) => {
     return (
         <div>
@@ -5,7 +7,7 @@ const Users = (props) => {
                 props.users.map( user => <div key={user.id}>
                     <span>
                         <div>
-                            <img src={user.photoUrl} />
+                            <img src={user.photoUrl} className={styles.userPhoto} />
                         </div>
                         <div>
                             <button>Follow</button>
