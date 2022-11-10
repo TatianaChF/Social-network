@@ -1,3 +1,6 @@
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
+
 let initialState = {
     users: [
         { id: 1, followed: true, fullName: 'Aleksander', status: 'I like cats!',
