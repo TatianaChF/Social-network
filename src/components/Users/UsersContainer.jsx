@@ -1,8 +1,10 @@
 import {connect} from "react-redux";
 import Users from "./Users";
 
-const mapStateToPropsUsers = () => {
-
+const mapStateToPropsUsers = (state) => {
+    return {
+         users: state.usersPage.users
+    }
 }
 
 const mapDispatchToPropsUsers = () => {
