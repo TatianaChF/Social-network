@@ -1,5 +1,5 @@
-const UsersReducer = (state, action) => {
+const usersReducer = (state, action) => {
 
 }
 
-export default UsersReducer;
+export default usersReducer;
