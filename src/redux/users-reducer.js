@@ -18,7 +18,7 @@ const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case FOLLOW:
-
+            let stateCopy = {...state};
         case UNFOLLOW:
 
         default:
