@@ -16,5 +16,6 @@ const usersReducer = (state = initialState, action) => {
 }
 
 export const FollowAC = () => ({ type: FOLLOW })
+export const UnfollowAC = () => ({ type: UNFOLLOW })
 
 export default usersReducer;
