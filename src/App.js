@@ -7,10 +7,11 @@ import {Route, Routes} from "react-router-dom";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
+import UsersContainer from "./components/Users/UsersContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
-    debugger;
+
   return (
           <div className="app-wrapper">
               <Header />
@@ -19,15 +20,13 @@ const App = (props) => {
                   <Routes>
                       <Route path="/profile"
                              element={<Profile />} />
-                      {/*// store={props.store}*/}
                       <Route path="/dialogs/*"
                              element={<DialogsContainer />} />
-                      {/*store={props.store}*/}
                       <Route path="/news" element={<News />} />
                       <Route path="/music" element={<Music />} />
                       <Route path="/settings" element={<Settings />} />
                       <Route path="/friends" element={<Friends />} />
-                      {/*data={props.store.friendsPage}*/}
+                      <Route path="/users" element={<UsersContainer />} />
                   </Routes>
               </div>
           </div>
