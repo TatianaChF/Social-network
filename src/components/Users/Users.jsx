@@ -1,5 +1,5 @@
 import styles from "./Users.module.css";
-import axios from "axios";
+import * as axios from "axios";
 
 const Users = (props) => {
 
