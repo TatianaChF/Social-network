@@ -1,5 +1,6 @@
 import styles from "./Users.module.css";
 import axios from "axios";
+import userPhoto from "../../assets/images/defaultUser.jpg";
 
 const Users = (props) => {
 
@@ -17,7 +18,7 @@ const Users = (props) => {
                 props.users.map( user => <div key={user.id}>
                     <span>
                         <div>
-                            <img src={user.photos.small} className={styles.userPhoto} />
+                            <img src={ user.photos.small != null ? user.photos.small : userPhoto } className={styles.userPhoto} />
                         </div>
                         <div>
                             { user.followed
