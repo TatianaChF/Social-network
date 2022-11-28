@@ -15,10 +15,10 @@ class Users extends React.Component {
         }
     }
 
-    onPageChanged = (page) => {
-        this.props.setPage(page);
+    onPageChanged = (pageNumber) => {
+        this.props.setPage(pageNumber);
         if (this.props.users.length === 0) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
                 .then(response => {
                     this.props.setUsers(response.data.items);
                 });
@@ -38,9 +38,9 @@ class Users extends React.Component {
         return (
             <div>
                 <div>
-                    {pages.map( page => {
-                        return <span className={this.props.currentPage === page ? styles.pageChoice : ""}
-                        onClick={ () => { this.onPageChanged(page); } }>{page}</span>
+                    {pages.map( pageNumber => {
+                        return <span className={this.props.currentPage === pageNumber ? styles.pageChoice : ""}
+                        onClick={ () => { this.onPageChanged(pageNumber); } }>{pageNumber}</span>
                     } )}
 
                 </div>
