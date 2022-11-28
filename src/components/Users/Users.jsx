@@ -15,7 +15,7 @@ class Users extends React.Component {
 
     render() {
 
-        let pagesCount = this.props.totalUsersCount / this.props.pageSize;
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
 
         let pages = [];
 
