@@ -26,11 +26,10 @@ class Users extends React.Component {
         return (
             <div>
                 <div>
-                    <span className={styles.pageChoice}>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
+                    {pages.map( page => {
+                        <span className={true && styles.pageChoice}>{page}</span>
+                    } )}
+
                 </div>
                 {
                     this.props.users.map( user => <div key={user.id}>
