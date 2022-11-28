@@ -17,12 +17,10 @@ class Users extends React.Component {
 
     onPageChanged = (pageNumber) => {
         this.props.setPage(pageNumber);
-        if (this.props.users.length === 0) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-                .then(response => {
-                    this.props.setUsers(response.data.items);
-                });
-        }
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items);
+            });
     }
 
     render() {
