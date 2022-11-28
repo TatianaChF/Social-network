@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Users.module.css";
 import axios from "axios";
 import userPhoto from "../../assets/images/defaultUser.jpg";
-import {setPage} from "../../redux/users-reducer";
 
 class Users extends React.Component {
 
@@ -39,7 +38,7 @@ class Users extends React.Component {
             <div>
                 <div>
                     {pages.map( page => {
-                        return <span className={this.props.currentPage === page && styles.pageChoice}
+                        return <span className={this.props.currentPage === page ? styles.pageChoice : ""}
                         onClick={ () => { this.onPageChanged(page); } }>{page}</span>
                     } )}
 
