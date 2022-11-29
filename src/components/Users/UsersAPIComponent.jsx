@@ -1,7 +1,6 @@
 import React from "react";
-import styles from "./Users.module.css";
 import axios from "axios";
-import userPhoto from "../../assets/images/defaultUser.jpg";
+import Users from "./Users";
 
 class UsersAPIComponent extends React.Component {
 
@@ -24,7 +23,7 @@ class UsersAPIComponent extends React.Component {
     }
 
     render() {
-
+        return <Users />
     }
 }
 
