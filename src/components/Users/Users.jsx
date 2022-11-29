@@ -19,13 +19,13 @@ const Users = (props) => {
                 {pages.map(pageNumber => {
                     return <span className={props.currentPage === pageNumber ? styles.pageChoice : ""}
                                  onClick={() => {
-                                     this.onPageChanged(pageNumber);
+                                     props.onPageChanged(pageNumber);
                                  }}>{pageNumber}</span>
                 })}
 
             </div>
             {
-                this.props.users.map(user => <div key={user.id}>
+                props.users.map(user => <div key={user.id}>
                     <span>
                         <div>
                             <img src={user.photos.small != null ? user.photos.small : userPhoto}
