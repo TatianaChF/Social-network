@@ -55,5 +55,6 @@ export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 export const setUserAC = (users) => ({type: SET_USER, users});
 export const setPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage });
 export const setTotalUsersCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount });
+export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching });
 
 export default usersReducer;
