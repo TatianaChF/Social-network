@@ -32,13 +32,17 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-        return <Users users={this.props.users}
+        return <>
+            { this.props.isFetching ? <div>
+                <img />
+            </div> : null }
+            <Users users={this.props.users}
                       totalUsersCount={this.props.totalUsersCount}
                       pageSize={this.props.pageSize}
                       onPageChanged={this.onPageChanged}
                       unfollow={this.props.unfollow}
-                      follow={this.props.follow}
-                      isFetching={this.props.isFetching}/>
+                      follow={this.props.follow} />
+        </>
     }
 }
 
