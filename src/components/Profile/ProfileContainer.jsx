@@ -1,6 +1,7 @@
 import React from "react";
 import Profile from "./Profile";
 import axios from "axios";
+import {connect} from "react-redux";
 
 class ProfileContainer extends React.Component {
 
@@ -19,4 +20,8 @@ class ProfileContainer extends React.Component {
 
 }
 
-export default ProfileContainer
+let mapStateToProps = (state) => ({
+
+})
+
+export default connect(mapStateToProps)(ProfileContainer);
