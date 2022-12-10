@@ -38,8 +38,11 @@ const Users = (props) => {
                         <div>
                             {user.followed
                                 ? <button onClick={() => {
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
-                                        withCredentials: true
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
+                                        withCredentials: true,
+                                        headers: {
+                                            'API-USER': '17b11f10-0d7a-451f-ad4a-a9dc5d2831f8'
+                                        }
                                     })
                                         .then(response => {
                                             if(response.data.resultCode === 0) {
@@ -49,7 +52,10 @@ const Users = (props) => {
                                 }}>Unfollow</button>
                                 : <button onClick={() => {
                                     axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
-                                        withCredentials: true
+                                        withCredentials: true,
+                                        headers: {
+                                            'API-USER': '17b11f10-0d7a-451f-ad4a-a9dc5d2831f8'
+                                        }
                                     })
                                         .then(response => {
                                             if(response.data.resultCode === 0) {
