@@ -29,7 +29,12 @@ class UsersContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.setPage(pageNumber);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+            headers: {
+                'API-USER': '17b11f10-0d7a-451f-ad4a-a9dc5d2831f8'
+            }
+        })
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
