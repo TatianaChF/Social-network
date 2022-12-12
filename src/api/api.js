@@ -1,5 +1,4 @@
 import axios from "axios";
-import {unfollow} from "../redux/users-reducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -15,11 +14,15 @@ export const usersAPI = {
     },
 
     putStateFollow(id) {
-        return instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`).then(response => response.data)
+        return instance.post(`follow/${id}`).then(response => response.data)
     },
 
     deleteStateFollow(id) {
-        return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`).then(response => response.data)
+        return instance.delete(`follow/${id}`).then(response => response.data)
+    },
+
+    getAuth() {
+        return instance.get('auth/me').then(response => response.data)
     }
 
 }
