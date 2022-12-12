@@ -46,8 +46,8 @@ const Users = (props) => {
                                         })
                                 }}>Unfollow</button>
                                 : <button onClick={() => {
-                                        usersAPI.putStateFollow(user.id).then(response => {
-                                            if(response.data.resultCode === 0) {
+                                        usersAPI.putStateFollow(user.id).then(data => {
+                                            if(data.resultCode === 0) {
                                                 props.follow(user.id);
                                             }
                                         })
