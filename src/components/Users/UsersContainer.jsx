@@ -8,10 +8,9 @@ import {
     toggleIsFetching, toggleIsLockedButtons,
     unfollow
 } from "../../redux/users-reducer";
-import axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {getUsers, usersAPI} from "../../api/api";
+import {usersAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
 
