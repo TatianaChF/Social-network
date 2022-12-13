@@ -3,14 +3,16 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USER = 'SET-USER';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING";
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
+const TOGGLE_IS_LOCKED_BUTTONS = 'TOGGLE-IS-LOCKED-BUTTONS';
 
 let initialState = {
     users: [ ],
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: true,
+    isLockedButtons: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -44,6 +46,13 @@ const usersReducer = (state = initialState, action) => {
             return {...state, totalUsersCount: action.totalUsersCount };
         case TOGGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching };
+        case TOGGLE_IS_LOCKED_BUTTONS:
+            return {
+                ...state,
+                isLockedButtons: action.isFetching
+                    ? [...state.isLockedButtons, action.userId]
+                    : state.isLockedButtons.filter(id => id !== action.userId)
+            };
         default:
             return state;
     }
@@ -56,5 +65,6 @@ export const setUsers = (users) => ({type: SET_USER, users});
 export const setPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage });
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount });
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching });
+export const toggleIsLockedButtons = (isFetching, userId) => ({type: TOGGLE_IS_LOCKED_BUTTONS, isFetching, userId });
 
 export default usersReducer;
