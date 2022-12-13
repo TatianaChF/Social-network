@@ -38,7 +38,7 @@ const Users = (props) => {
                         </div>
                         <div>
                             {user.followed
-                                ? <button disabled={props.isLockedButtons} onClick={() => {
+                                ? <button disabled={props.isLockedButtons.some(id => id === user.id)} onClick={() => {
                                     props.toggleIsLockedButtons(true, user.id);
                                         usersAPI.deleteStateFollow(user.id).then(data => {
                                             props.toggleIsLockedButtons(false, user.id);
@@ -47,7 +47,7 @@ const Users = (props) => {
                                             }
                                         })
                                 }}>Unfollow</button>
-                                : <button disabled={props.isLockedButtons} onClick={() => {
+                                : <button disabled={props.isLockedButtons.some(id => id === user.id)} onClick={() => {
                                         props.toggleIsLockedButtons(true, user.id);
                                         usersAPI.putStateFollow(user.id).then(data => {
                                             props.toggleIsLockedButtons(false, user.id);
