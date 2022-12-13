@@ -3,7 +3,8 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USER = 'SET-USER';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING";
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
+const TOGGLE_IS_LOCKED_BUTTONS = 'TOGGLE-IS-LOCKED-BUTTONS';
 
 let initialState = {
     users: [ ],
@@ -45,6 +46,13 @@ const usersReducer = (state = initialState, action) => {
             return {...state, totalUsersCount: action.totalUsersCount };
         case TOGGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching };
+        case TOGGLE_IS_LOCKED_BUTTONS:
+            return {
+                ...state,
+                isLockedButtons: action.isFetching
+                    ? [...state.isLockedButtons, action.users]
+                    : state.isLockedButtons.filter(id => id !== action.userId)
+            };
         default:
             return state;
     }
