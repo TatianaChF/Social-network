@@ -50,7 +50,7 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLockedButtons: action.isFetching
-                    ? [...state.isLockedButtons, action.users]
+                    ? [...state.isLockedButtons, action.userId]
                     : state.isLockedButtons.filter(id => id !== action.userId)
             };
         default:
@@ -65,5 +65,6 @@ export const setUsers = (users) => ({type: SET_USER, users});
 export const setPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage });
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount });
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching });
+export const toggleIsLockedButtons = (isFetching, userId) => ({type: TOGGLE_IS_LOCKED_BUTTONS, isFetching, userId });
 
 export default usersReducer;
