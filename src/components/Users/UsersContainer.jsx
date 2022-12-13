@@ -43,7 +43,8 @@ class UsersContainer extends React.Component {
                       onPageChanged={this.onPageChanged}
                       unfollow={this.props.unfollow}
                       follow={this.props.follow}
-                      isLockedButtons={this.props.isLockedButtons} />
+                      isLockedButtons={this.props.isLockedButtons}
+                      toggleIsLockedButtons={this.props.toggleIsLockedButtons} />
         </>
     }
 }
