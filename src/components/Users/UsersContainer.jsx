@@ -17,7 +17,7 @@ class UsersContainer extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0) {
 
-            this.props.getUsers();
+            this.props.getUsers(this.props.currentPage, this.props.pageSize);
 
         }
     }
