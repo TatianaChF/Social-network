@@ -96,4 +96,18 @@ export const follow = (userId) => {
     } // thunk
 } // thunkCreator
 
+export const unfollow = (userId) => {
+    return (dispatch) => {
+
+        dispatch(toggleIsLockedButtons(true, userId));
+        usersAPI.deleteStateFollow(userId).then(data => {
+            dispatch(toggleIsLockedButtons(false, userId));
+            if(data.resultCode === 0) {
+                dispatch(unfollowSuccess(userId));
+            }
+        });
+
+    } // thunk
+} // thunkCreator
+
 export default usersReducer;
