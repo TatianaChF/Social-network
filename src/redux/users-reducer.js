@@ -69,15 +69,17 @@ export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_C
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export const toggleIsLockedButtons = (isFetching, userId) => ({type: TOGGLE_IS_LOCKED_BUTTONS, isFetching, userId});
 
-const getUsers = (dispatch) => {
+const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
 
-    dispatch(toggleIsFetching(true));
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-        dispatch(toggleIsFetching(false));
-        dispatch(setUsers(data.items));
-        dispatch(setTotalUsersCount(data.totalCount));
-    });
+        dispatch(toggleIsFetching(true));
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+        });
 
-} // thunk
+    } // thunk
+} // thunkCreator
 
 export default usersReducer;
