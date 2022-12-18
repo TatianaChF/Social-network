@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow,
+    follow, getUsers,
     setPage,
     setTotalUsersCount,
     setUsers,
@@ -61,5 +61,5 @@ const mapStateToPropsUsers = (state) => {
 }
 
 export default connect(mapStateToPropsUsers, {
-    follow, unfollow, setUsers, setPage, setTotalUsersCount, toggleIsFetching, toggleIsLockedButtons
+    follow, unfollow, setUsers, setPage, setTotalUsersCount, toggleIsFetching, toggleIsLockedButtons, getUsers
 })(UsersContainer);
