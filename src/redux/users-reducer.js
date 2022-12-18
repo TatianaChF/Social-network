@@ -71,11 +71,11 @@ export const toggleIsLockedButtons = (isFetching, userId) => ({type: TOGGLE_IS_L
 
 const getUsers = (dispatch) => {
 
-    toggleIsFetching(true);
+    dispatch(toggleIsFetching(true));
     usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-        toggleIsFetching(false);
-        setUsers(data.items);
-        setTotalUsersCount(data.totalCount);
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUsersCount(data.totalCount));
     });
 
 } // thunk
