@@ -38,8 +38,7 @@ class UsersContainer extends React.Component {
                    unfollow={this.props.unfollow}
                    follow={this.props.follow}
                    isLockedButtons={this.props.isLockedButtons}
-                   toggleIsLockedButtons={this.props.toggleIsLockedButtons}
-                    />
+                   toggleIsLockedButtons={this.props.toggleIsLockedButtons} />
         </>
     }
 }
@@ -56,5 +55,5 @@ const mapStateToPropsUsers = (state) => {
 }
 
 export default connect(mapStateToPropsUsers, {
-    follow, unfollow, setUsers, setPage, setTotalUsersCount, toggleIsFetching, toggleIsLockedButtons, getUsers
+    follow, unfollow, setPage, toggleIsLockedButtons, getUsers
 })(UsersContainer);
