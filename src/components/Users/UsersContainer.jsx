@@ -1,57 +1,48 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow,
+    follow, getUsers,
     setPage,
-    setTotalUsersCount,
-    setUsers,
-    toggleIsFetching, toggleIsLockedButtons,
+    toggleIsLockedButtons,
     unfollow
 } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {usersAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         if (this.props.users.length === 0) {
-            this.props.toggleIsFetching(true);
-            usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-                    this.props.toggleIsFetching(false);
-                    this.props.setUsers(data.items);
-                    this.props.setTotalUsersCount(data.totalCount);
-                });
+
+            this.props.getUsers(this.props.currentPage, this.props.pageSize); //thunk
+
         }
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.setPage(pageNumber);
-        this.props.toggleIsFetching(true);
-            usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-            });
+
+        this.props.getUsers(pageNumber, this.props.pageSize); //thunk
+
     }
 
     render() {
         return <>
-            { this.props.isFetching ? <Preloader /> : null }
+            {this.props.isFetching ? <Preloader/> : null}
             <Users users={this.props.users}
-                      totalUsersCount={this.props.totalUsersCount}
-                      pageSize={this.props.pageSize}
-                      onPageChanged={this.onPageChanged}
-                      unfollow={this.props.unfollow}
-                      follow={this.props.follow}
-                      isLockedButtons={this.props.isLockedButtons}
-                      toggleIsLockedButtons={this.props.toggleIsLockedButtons} />
+                   totalUsersCount={this.props.totalUsersCount}
+                   pageSize={this.props.pageSize}
+                   onPageChanged={this.onPageChanged}
+                   unfollow={this.props.unfollow}
+                   follow={this.props.follow}
+                   isLockedButtons={this.props.isLockedButtons}
+                   toggleIsLockedButtons={this.props.toggleIsLockedButtons} />
         </>
     }
 }
 
 const mapStateToPropsUsers = (state) => {
     return {
-         users: state.usersPage.users,
+        users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
@@ -61,5 +52,5 @@ const mapStateToPropsUsers = (state) => {
 }
 
 export default connect(mapStateToPropsUsers, {
-    follow, unfollow, setUsers, setPage, setTotalUsersCount, toggleIsFetching, toggleIsLockedButtons
+    follow, unfollow, setPage, toggleIsLockedButtons, getUsers
 })(UsersContainer);
