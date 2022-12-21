@@ -37,12 +37,10 @@ function withRouter(Component) {
 
     return ComponentWithRouterProps;
 }
-
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth
+    profile: state.profilePage.profile
 });
 
-let withRedirect = withAuthRedirect(ProfileContainer);
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
-export default connect(mapStateToProps, {getUserProfile})(withRouter(withRedirect));
+export default connect(mapStateToProps, {getUserProfile})(withRouter(AuthRedirectComponent));

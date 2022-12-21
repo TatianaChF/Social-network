@@ -12,9 +12,9 @@ let mapStateToProps = (state) => {
         dialogsData: state.dialogsPage.dialogsData,
         newMessageText: state.dialogsPage.newMessageText,
         messagesData: state.dialogsPage.messagesData,
-        isAuth: state.auth.isAuth
     }
 }
+
 let mapDispatchToProps = (dispatch) => {
     return {
         addMessage: () => {
@@ -27,8 +27,8 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-let withRedirect = withAuthRedirect(Dialogs);
+let AuthRedirectComponent = withAuthRedirect(Dialogs);
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(withRedirect);
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
 
 export default DialogsContainer;
