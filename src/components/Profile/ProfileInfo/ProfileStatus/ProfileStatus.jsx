@@ -1,6 +1,13 @@
-const ProfileStatus = () => {
+const ProfileStatus = (props) => {
     return (
-        <div></div>
+        <div>
+            <div>
+                <span>{props.status}</span>
+            </div>
+            <div>
+                <input value={props.status} />
+            </div>
+        </div>
     )
 }
 
