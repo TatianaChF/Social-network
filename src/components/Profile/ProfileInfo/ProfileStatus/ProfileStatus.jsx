@@ -20,7 +20,7 @@ class ProfileStatus extends React.Component {
                         <input value={this.props.status}/>
                     </div>
                     : <div>
-                        <span>{this.props.status}</span>
+                        <span onDoubleClick={ this.activateEditMode.bind(this) }>{this.props.status}</span>
                     </div>}
             </div>
         )
