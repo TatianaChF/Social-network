@@ -3,6 +3,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import greenCircle from "../../../assets/images/green.png";
 import redCircle from "../../../assets/images/red.png";
 import defaultAvatar from "../../../assets/images/defaultUser.jpg";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
 
@@ -19,6 +20,7 @@ const ProfileInfo = (props) => {
                      <img src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar}  alt="avatar" />
                  <h2>Информация</h2>
                  <div>
+                     <ProfileStatus status={"Hello!"} />
                      <p>Id: {props.profile.userId}</p>
                      <p>Status: <img src={props.profile.lookingForAJob ? greenCircle : redCircle }
                                      className={style.bool} alt="status" />
