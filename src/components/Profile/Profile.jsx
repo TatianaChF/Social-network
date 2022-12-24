@@ -11,5 +11,4 @@ const Profile = (props) => {
     )
 }
 
-// store={props.store}
 export default Profile;
