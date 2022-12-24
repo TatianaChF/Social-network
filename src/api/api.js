@@ -25,14 +25,14 @@ export const usersAPI = {
         return instance.get('auth/me').then(response => response.data)
     },
 
-    getUserProfile(userId = 27206) {
+    getUserProfile(userId = 27018) {
         return profileAPI.getUserProfile(userId);
     }
 
 }
 
 export const profileAPI = {
-    getUserProfile(userId = 27206) {
+    getUserProfile(userId = 27018) {
         return instance.get(`profile/${userId}`).then(response => response.data)
     },
 
