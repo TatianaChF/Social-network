@@ -20,7 +20,7 @@ const ProfileInfo = (props) => {
                      <img src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar}  alt="avatar" />
                  <h2>Информация</h2>
                  <div>
-                     <ProfileStatus status={"Hello!"} />
+                     <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} />
                      <p>Id: {props.profile.userId}</p>
                      <p>Status: <img src={props.profile.lookingForAJob ? greenCircle : redCircle }
                                      className={style.bool} alt="status" />
