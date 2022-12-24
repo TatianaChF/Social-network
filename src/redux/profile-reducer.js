@@ -81,4 +81,16 @@ export const getUserStatus = (userId) => {
     } // thunk
 }
 
+export const updatetUserStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status)
+            .then(response => {
+                if ( response.data.resultCode === 0 ) {
+                    dispatch(setStatus(response.data));
+                }
+            });
+
+    } // thunk
+}
+
 export default profileReducer;
