@@ -41,7 +41,8 @@ function withRouter(Component) {
     return ComponentWithRouterProps;
 }
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    status: state.profilePage.status
 });
 
 export default compose(
