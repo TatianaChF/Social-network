@@ -69,7 +69,7 @@ export const getUserProfile = (userId) => {
     } // thunk
 }
 
-export const getStatus = (userId) => {
+export const getUserStatus = (userId) => {
     return (dispatch) => {
 
             profileAPI.getStatus(userId)
