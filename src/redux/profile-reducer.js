@@ -81,7 +81,7 @@ export const getUserStatus = (userId) => {
     } // thunk
 }
 
-export const updatetUserStatus = (status) => {
+export const updateUserStatus = (status) => {
     return (dispatch) => {
         profileAPI.updateStatus(status)
             .then(response => {
