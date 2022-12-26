@@ -2,6 +2,14 @@ const Login = (props) => {
     return (
         <div>
             <h1>LOGIN</h1>
+            <LoginForm />
+        </div>
+    )
+}
+
+const LoginForm = (props) => {
+    return (
+        <div>
             <form>
                 <div>
                     <input placeholder={"Login"}/>
