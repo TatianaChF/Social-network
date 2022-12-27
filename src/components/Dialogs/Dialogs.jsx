@@ -24,8 +24,8 @@ const Dialogs = (props) => {
         props.addMessage();
     }
 
-    let addMessage = () => {
-        alert("nvrnvj");
+    let addMessage = (value) => {
+        alert(value.newMessage);
     }
 
     return (
@@ -48,7 +48,7 @@ const DialogsForm = (props) => {
         <div>
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field placeholder="Enter your message..." name="message" component="textarea" />
+                    <Field placeholder="Enter your message..." name="newMessage" component="textarea" />
                 </div>
                 <div>
                     <button>Send</button>
