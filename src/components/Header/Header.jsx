@@ -1,5 +1,7 @@
 import style from './Header.module.css';
 import {NavLink} from "react-router-dom";
+import Login from "../Login/Login";
+import {sendAuthorization} from "../../redux/auth-reducer";
 
 const Header = (props) => {
     return (
@@ -9,7 +11,7 @@ const Header = (props) => {
             <div className={style.loginBlock}>
                 { props.isAuth ? props.login
                     : <NavLink to={'/login'}>
-                        Login
+                        <Login sendAuthorization={props.sendAuthorization}/>
                     </NavLink>}
 
             </div>

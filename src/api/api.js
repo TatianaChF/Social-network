@@ -51,6 +51,6 @@ export const authAPI = {
     },
 
     sendLogin() {
-        return instance.post(`/auth/login`);
+        return instance.post(`/auth/login`).then(response => response.data);
     } // server authorization request
 }

@@ -1,4 +1,5 @@
 import {Field, reduxForm} from "redux-form";
+import {sendAuthorization} from "../../redux/auth-reducer";
 
 const LoginForm = (props) => {
     return (
@@ -25,6 +26,7 @@ const LoginReduxForm = reduxForm({form: "login"})(LoginForm);
 const Login = (props) => {
     const onSubmit = (formData) => {
         console.log(formData);
+        props.sendAuthorization();
     }
     return (
         <div>
