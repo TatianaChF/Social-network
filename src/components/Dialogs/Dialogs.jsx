@@ -24,33 +24,31 @@ const Dialogs = (props) => {
         props.addMessage();
     }
 
-    let addNewMessageTwo = () => {
-        alert("Kyky");
+    let addMessage = () => {
+        alert("nvrnvj");
     }
 
     return (
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
-                {dialogsElement}
+                { dialogsElement }
             </div>
             <div className={style.messages}>
                 <div>{messagesElements}</div>
-                <DialogsReduxForm onSubmit={addNewMessageTwo} />
-                <div className={style.addMessage}>
+                <div>
+                    <DialogsReduxForm onSubmit={addMessage} />
                 </div>
             </div>
-
         </div>
     )
 }
+
 const DialogsForm = (props) => {
     return (
         <div>
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field placeholder={"Enter your message..."}
-                           name={"message"}
-                           component={"textarea"} />
+                    <Field placeholder="Enter your message..." name="message" component="textarea" />
                 </div>
                 <div>
                     <button>Send</button>
@@ -60,6 +58,6 @@ const DialogsForm = (props) => {
     )
 }
 
-let DialogsReduxForm = reduxForm({from: "message"})(DialogsForm);
+const DialogsReduxForm = reduxForm({form: "message"})(DialogsForm);
 
 export default Dialogs;
