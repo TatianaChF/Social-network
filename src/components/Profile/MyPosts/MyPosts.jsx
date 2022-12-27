@@ -20,20 +20,26 @@ const MyPosts = (props) => {
     return (
             <div className={style.postsBlock}>
                 <h3>My posts</h3>
-                <div>
-                    <div>
-                        <textarea onChange={ onPostChange }
-                                  ref={ newPostElement }
-                                  value={props.newPostText}></textarea>
-                    </div>
-                    <div>
-                        <button onClick={ onAddPost }>Add post</button>
-                    </div>
-                </div>
+                <MyPostForm onPostChange={onPostChange} newPostElement={newPostElement} onAddPost={onAddPost} />
                 <div className={style.posts}>
                     { postsElement }
                 </div>
             </div>
+    )
+}
+
+const MyPostForm = (props) => {
+    return (
+        <div>
+            <div>
+                        <textarea onChange={ props.onPostChange }
+                                  ref={ props.newPostElement }
+                                  value={props.newPostText}></textarea>
+            </div>
+            <div>
+                <button onClick={ props.onAddPost }>Add post</button>
+            </div>
+        </div>
     )
 }
 
