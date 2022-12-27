@@ -22,7 +22,7 @@ export const usersAPI = {
     },
 
     getAuth() {
-        return instance.get('auth/me').then(response => response.data)
+        return authAPI.getAuth();
     },
 
     getUserProfile(userId = 27018) {
@@ -45,3 +45,12 @@ export const profileAPI = {
     },
 }
 
+export const authAPI = {
+    getAuth() {
+        return instance.get('auth/me').then(response => response.data)
+    },
+
+    sendLogin() {
+        return instance.post(`/auth/login`);
+    } // server authorization request
+}
