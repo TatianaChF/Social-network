@@ -24,6 +24,10 @@ const Dialogs = (props) => {
         props.addMessage();
     }
 
+    let addNewMessageTwo = () => {
+        alert("Kyky");
+    }
+
     return (
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
@@ -31,8 +35,7 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 <div>{messagesElements}</div>
-                <DialogsReduxForm onMessageChang={onMessageChange} addNewMessage={addNewMessage}
-                                  onAddMessage={onAddMessage}/>
+                <DialogsReduxForm onSubmit={addNewMessageTwo} />
                 <div className={style.addMessage}>
                 </div>
             </div>
@@ -43,18 +46,14 @@ const Dialogs = (props) => {
 const DialogsForm = (props) => {
     return (
         <div>
-            <form>
+            <form onSubmit={props.handleSubmit}>
                 <div>
-                    <div>
-                        <Field placeholder={"Enter your message..."}
-                               name={"message"}
-                               component={"textarea"}
-                               onChange={props.onMessageChange}
-                               ref={props.addNewMessage} value={props.newMessageText}/>
-                    </div>
-                    <div>
-                        <button onClick={props.onAddMessage}>Send</button>
-                    </div>
+                    <Field placeholder={"Enter your message..."}
+                           name={"message"}
+                           component={"textarea"} />
+                </div>
+                <div>
+                    <button>Send</button>
                 </div>
             </form>
         </div>
