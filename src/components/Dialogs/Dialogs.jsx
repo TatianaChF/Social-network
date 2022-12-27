@@ -30,21 +30,29 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 <div>{messagesElements}</div>
-                <div>
-                    <div>
-                        <textarea placeholder="Enter your message..."
-                                  onChange={ onMessageChange }
-                                  ref={ addNewMessage } value={ props.newMessageText } ></textarea>
-                    </div>
-                    <div>
-                        <button onClick={ onAddMessage }>Send</button>
-                    </div>
-                </div>
+                <DialogsForm onMessageChang={onMessageChange} addNewMessage={addNewMessage} onAddMessage={onAddMessage} />
                 <div className={style.addMessage}>
-
                 </div>
             </div>
 
+        </div>
+    )
+}
+const DialogsForm = (props) => {
+    return (
+        <div>
+            <form>
+                <div>
+                    <div>
+                        <textarea placeholder="Enter your message..."
+                                  onChange={ props.onMessageChange }
+                                  ref={ props.addNewMessage } value={ props.newMessageText } ></textarea>
+                    </div>
+                    <div>
+                        <button onClick={ props.onAddMessage }>Send</button>
+                    </div>
+                </div>
+            </form>
         </div>
     )
 }
