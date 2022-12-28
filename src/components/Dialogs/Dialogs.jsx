@@ -21,11 +21,10 @@ const Dialogs = (props) => {
     }
 
     let onAddMessage = () => {
-        props.addMessage();
+        props.sendMessage();
     }
-
     let addMessage = (value) => {
-        alert(value.newMessage);
+        props.sendMessage(value.newMessageBody);
     }
 
     return (
@@ -36,19 +35,19 @@ const Dialogs = (props) => {
             <div className={style.messages}>
                 <div>{messagesElements}</div>
                 <div>
-                    <DialogsReduxForm onSubmit={addMessage} />
+                    <AddMessageReduxForm onSubmit={addMessage} />
                 </div>
             </div>
         </div>
     )
 }
 
-const DialogsForm = (props) => {
+const AddMessageForm = (props) => {
     return (
         <div>
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field placeholder="Enter your message..." name="newMessage" component="textarea" />
+                    <Field placeholder="Enter your message..." name="newMessageBody" component="textarea" />
                 </div>
                 <div>
                     <button>Send</button>
@@ -58,6 +57,6 @@ const DialogsForm = (props) => {
     )
 }
 
-const DialogsReduxForm = reduxForm({form: "message"})(DialogsForm);
+const AddMessageReduxForm = reduxForm({form: "message"})(AddMessageForm);
 
 export default Dialogs;
