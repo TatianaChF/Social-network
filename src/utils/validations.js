@@ -1,4 +1,4 @@
-const required = value => {
+export const required = value => {
     if (value) return undefined;
-    else return "Field error!";
+    else return "Field is required!";
 }
