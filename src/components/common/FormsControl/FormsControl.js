@@ -1,7 +1,7 @@
-const Textarea = () => {
+const Textarea = (props) => {
     return (
         <div>
-            <textarea />
+            <textarea {...props} />
         </div>
     )
 }
