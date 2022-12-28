@@ -13,16 +13,6 @@ const Dialogs = (props) => {
         message => <Message message={message.message} key={message.id}/>
     );
 
-    let addNewMessage = React.createRef();
-
-    let onMessageChange = () => {
-        let text = addNewMessage.current.value;
-        props.updateNewMessage(text);
-    }
-
-    let onAddMessage = () => {
-        props.sendMessage();
-    }
     let addMessage = (value) => {
         props.sendMessage(value.newMessageBody);
     }
