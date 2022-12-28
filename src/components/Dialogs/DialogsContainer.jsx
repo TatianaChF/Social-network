@@ -11,15 +11,15 @@ import {compose} from "redux";
 let mapStateToProps = (state) => {
     return {
         dialogsData: state.dialogsPage.dialogsData,
-        newMessageText: state.dialogsPage.newMessageText,
-        messagesData: state.dialogsPage.messagesData,
+        messagesData: state.dialogsPage.messagesData
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
+    debugger
     return {
-        addMessage: () => {
-            dispatch(addMessageActionCreator());
+        sendMessage: (newMessageBody) => {
+            dispatch(addMessageActionCreator(newMessageBody));
         },
         updateNewMessage: (text) => {
             let action = updateNewMessageTextActionCreator(text);
