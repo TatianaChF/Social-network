@@ -34,15 +34,10 @@ const MyPostForm = (props) => {
         <div>
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field placeholder={"AddingPost"}
-                           name={"posts"}
-                           component={"textarea"}
-                           onChange={props.onPostChange}
-                           ref={props.newPostElement}
-                           value={props.newPostText}/>
+                    <Field placeholder="AddingPost" name="posts"  component="textarea" />
                 </div>
                 <div>
-                    <button onClick={props.onAddPost}>Add post</button>
+                    <button>Add post</button>
                 </div>
             </form>
         </div>
