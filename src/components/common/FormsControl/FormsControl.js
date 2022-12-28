@@ -1,8 +1,8 @@
-import style from "./FormsControl.module.css";
+import styles from "./FormsControl.module.css";
 const Textarea = ({input, meta, ...props}) => {
     return (
-        <div className={style.formsControl}>
-            <textarea {...props} {...input} className={style.error}/>
+        <div className={styles.formsControl + " " + styles.error} >
+            <textarea {...props} {...input} />
         </div>
     )
 }
