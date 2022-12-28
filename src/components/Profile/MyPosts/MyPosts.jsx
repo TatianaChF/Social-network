@@ -9,8 +9,8 @@ const MyPosts = (props) => {
 
     let newPostElement = React.createRef();
 
-    let onAddPost = () => {
-        props.addPost();
+    let onAddPost = (value) => {
+        props.addPost(value.newPost);
     }
 
     let onPostChange = () => {
@@ -21,7 +21,7 @@ const MyPosts = (props) => {
     return (
         <div className={style.postsBlock}>
             <h3>My posts</h3>
-            <MyPostReduxForm onPostChange={onPostChange} newPostElement={newPostElement} onAddPost={onAddPost}/>
+            <MyPostReduxForm onSubmit={onAddPost} />
             <div className={style.posts}>
                 {postsElement}
             </div>
@@ -34,7 +34,7 @@ const MyPostForm = (props) => {
         <div>
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field placeholder="AddingPost" name="posts"  component="textarea" />
+                    <Field placeholder="AddingPost" name="newPost"  component="textarea" />
                 </div>
                 <div>
                     <button>Add post</button>
