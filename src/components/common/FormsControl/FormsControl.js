@@ -1,5 +1,5 @@
 import styles from "./FormsControl.module.css";
-const Textarea = ({input, meta, ...props}) => {
+export const Textarea = ({input, meta, ...props}) => {
     let hasError = meta.touched && meta.error;
     return (
         <div>
@@ -10,5 +10,14 @@ const Textarea = ({input, meta, ...props}) => {
         </div>
     )
 }
-
-export default Textarea;
+export const Input = ({input, meta, ...props}) => {
+    let hasError = meta.touched && meta.error;
+    return (
+        <div>
+            <div className={styles.formsControl + " " + (hasError ? styles.error : "")} >
+                <input {...props} {...input} />
+            </div>
+            {hasError && <span>{meta.error}</span>}
+        </div>
+    )
+}
