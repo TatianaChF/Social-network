@@ -10,7 +10,7 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let onAddPost = (value) => {
-        props.addPost(value.newPost);
+        props.addPost(value.newPostText);
     }
 
     let onPostChange = () => {
@@ -34,7 +34,7 @@ const MyPostForm = (props) => {
         <div>
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field placeholder="AddingPost" name="newPost"  component="textarea" />
+                    <Field placeholder="AddingPost" name="newPostText"  component="textarea" />
                 </div>
                 <div>
                     <button>Add post</button>
