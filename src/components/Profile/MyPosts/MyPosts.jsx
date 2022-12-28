@@ -32,7 +32,7 @@ const MyPosts = (props) => {
 const MyPostForm = (props) => {
     return (
         <div>
-            <form>
+            <form onSubmit={props.handleSubmit}>
                 <div>
                     <Field placeholder={"AddingPost"}
                            name={"posts"}
