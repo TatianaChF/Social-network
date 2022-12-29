@@ -51,6 +51,10 @@ export const authAPI = {
     },
 
     sendLogin(email, password, rememberMe = false) {
-        return instance.post(`/auth/login`, {email, password, rememberMe}).then(response => response.data);
-    } // server authorization request
+        return instance.post(`/auth/login`, {email, password, rememberMe});
+    }, // server authorization request
+
+    logout() {
+        return instance.delete(`/auth/login`);
+    } // page exit request
 }
