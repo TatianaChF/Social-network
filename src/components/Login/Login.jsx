@@ -39,5 +39,7 @@ const Login = (props) => {
     )
 }
 
-
-export default connect(null, {sendAuthorization, logout})(Login);
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+export default connect(mapStateToProps, {sendAuthorization, logout})(Login);
