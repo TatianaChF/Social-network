@@ -34,8 +34,8 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}});
-export const sendAuthUserData = (email, password, rememberMe, captcha) => ({type: SEND_USER_DATA,
-    data: {email, password, rememberMe, captcha}});
+// export const sendAuthUserData = (email, password, rememberMe, captcha) => ({type: SEND_USER_DATA,
+//     data: {email, password, rememberMe, captcha}});
 
 
 export const getAuth = () => {
@@ -52,10 +52,9 @@ export const getAuth = () => {
 
 export const sendAuthorization = (email, password, rememberMe) => {
     return (dispatch) => {
-        dispatch(sendAuthUserData(email, password, true, true))
-        authAPI.sendLogin().then(data => {
-            if (data.resultCode === 0) {
-                dispatch(sendAuthUserData(email, password, true, false));
+        authAPI.sendLogin(email, password, rememberMe).then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(getAuth());
             }
         });
     } // thunk
