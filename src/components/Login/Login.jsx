@@ -1,7 +1,8 @@
 import {Field, reduxForm} from "redux-form";
-import {sendAuthorization} from "../../redux/auth-reducer";
+import {logout, sendAuthorization} from "../../redux/auth-reducer";
 import {Input} from "../common/FormsControl/FormsControl";
 import {required} from "../../utils/validations";
+import {connect} from "react-redux";
 
 const LoginForm = (props) => {
     return (
@@ -27,8 +28,7 @@ const LoginForm = (props) => {
 const LoginReduxForm = reduxForm({form: "login"})(LoginForm);
 const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData);
-        props.sendAuthorization();
+        props.sendAuthorization(formData.email, formData.password, formData.rememberMe);
     }
     return (
         <div>
@@ -39,4 +39,4 @@ const Login = (props) => {
 }
 
 
-export default Login;
+export default connect(null, {sendAuthorization, logout})(Login);
