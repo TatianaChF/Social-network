@@ -50,7 +50,7 @@ export const getAuth = () => {
     } // thunk
 } //thunk creator
 
-export const sendAuthorization = (email, password) => {
+export const sendAuthorization = (email, password, rememberMe) => {
     return (dispatch) => {
         dispatch(sendAuthUserData(email, password, true, true))
         authAPI.sendLogin().then(data => {
