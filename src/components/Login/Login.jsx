@@ -3,6 +3,7 @@ import {logout, sendAuthorization} from "../../redux/auth-reducer";
 import {Input} from "../common/FormsControl/FormsControl";
 import {required} from "../../utils/validations";
 import {connect} from "react-redux";
+import {Navigate} from "react-router-dom";
 
 const LoginForm = (props) => {
     return (
@@ -31,6 +32,11 @@ const Login = (props) => {
     const onSubmit = (formData) => {
         props.sendAuthorization(formData.email, formData.password, formData.rememberMe);
     }
+
+    if (props.isAuth) {
+        return <Navigate to={"/profile"} />
+    }
+
     return (
         <div>
             <h1>LOGIN</h1>
