@@ -1,7 +1,6 @@
 import {authAPI, usersAPI} from "../api/api";
 
 const SET_USER_DATA = 'SET-USER-DATA';
-const SEND_USER_DATA = 'SEND-USER-DATA';
 
 let initialState = {
     userId: null,
@@ -22,29 +21,20 @@ const authReducer = (state = initialState, action) => {
                 ...action.data,
                 isAuth: true
             }
-        case SEND_USER_DATA:
-            return {
-                ...state,
-                ...action.data,
-                isAuth: true
-            }
         default:
             return state;
     }
 }
 
-export const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}});
-// export const sendAuthUserData = (email, password, rememberMe, captcha) => ({type: SEND_USER_DATA,
-//     data: {email, password, rememberMe, captcha}});
-
+export const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_USER_DATA,
+    data: {userId, email, login, isAuth}});
 
 export const getAuth = () => {
     return (dispatch) => {
-
         usersAPI.getAuth().then(data => {
             if (data.resultCode === 0) {
-                let {id, email, login} = data.data;
-                dispatch(setAuthUserData(id, email, login));
+                let {id, email, login, isAuth} = data.data;
+                dispatch(setAuthUserData(id, email, login, isAuth));
             }
         });
     } // thunk
@@ -55,6 +45,16 @@ export const sendAuthorization = (email, password, rememberMe) => {
         authAPI.sendLogin(email, password, rememberMe).then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(getAuth());
+            }
+        });
+    } // thunk
+} //thunk creator
+
+export const logout = () => {
+    return (dispatch) => {
+        authAPI.logout().then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false));
             }
         });
     } // thunk
