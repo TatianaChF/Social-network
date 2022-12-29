@@ -32,8 +32,8 @@ export const getAuth = () => {
     return (dispatch) => {
         usersAPI.getAuth().then(data => {
             if (data.resultCode === 0) {
-                let {id, email, login, isAuth} = data.data;
-                dispatch(setAuthUserData(id, email, login, isAuth));
+                let {id, email, login} = data.data;
+                dispatch(setAuthUserData(id, email, login, true));
             }
         });
     } // thunk
