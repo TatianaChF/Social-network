@@ -21,7 +21,7 @@ const LoginForm = (props) => {
                     <Field type={"checkbox"} name={"rememberMe"} component={Input} /> remember me
                 </div>
                 <div className={style.someInputError}>
-
+                    ERROR
                 </div>
                 <div>
                     <button>Login</button>
