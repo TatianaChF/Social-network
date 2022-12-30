@@ -4,6 +4,7 @@ import {Input} from "../common/FormsControl/FormsControl";
 import {required} from "../../utils/validations";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
+import style from "../common/FormsControl/FormsControl.module.css";
 
 const LoginForm = (props) => {
     return (
@@ -13,12 +14,18 @@ const LoginForm = (props) => {
                     <Field placeholder={"Email"} name={"email"} component={Input} validate={[required]}/>
                 </div>
                 <div>
-                    <Field placeholder={"Password"} name={"password"} component={Input}  type={"password"}
-                           validate={[required]} />
+                    <Field placeholder={"Password"} name={"password"} component={Input} type={"password"}
+                           validate={[required]}/>
                 </div>
                 <div>
-                    <Field type={"checkbox"} name={"rememberMe"} component={Input} /> remember me
+                    <Field type={"checkbox"} name={"rememberMe"} component={Input}/> remember me
                 </div>
+                {
+                    props.error &&
+                    <div className={style.someInputError}>
+                        {props.error}
+                    </div>
+                }
                 <div>
                     <button>Login</button>
                 </div>
@@ -34,13 +41,13 @@ const Login = (props) => {
     }
 
     if (props.isAuth) {
-        return <Navigate to={"/profile"} />
+        return <Navigate to={"/profile"}/>
     }
 
     return (
         <div>
             <h1>LOGIN</h1>
-            <LoginReduxForm onSubmit={ onSubmit } />
+            <LoginReduxForm onSubmit={onSubmit}/>
         </div>
     )
 }
