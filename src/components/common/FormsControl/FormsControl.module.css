@@ -2,3 +2,8 @@
 .formsControl.error textarea {
     border: solid red 2px;
 }
+
+.someInputError {
+    border: solid red 2px;
+    padding: 2px;
+}
