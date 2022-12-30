@@ -37,7 +37,7 @@ export const getAuth = () => {
                 let {id, email, login} = data.data;
                 dispatch(setAuthUserData(id, email, login, true));
             } else {
-                let message = data.message.length > 0 ? data.message : "Common error";
+                let message = data.messages.length > 0 ? data.messages[0] : "Some error";
                 dispatch(stopSubmit("login", {_error: message}));
             }
         });

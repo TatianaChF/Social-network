@@ -14,15 +14,18 @@ const LoginForm = (props) => {
                     <Field placeholder={"Email"} name={"email"} component={Input} validate={[required]}/>
                 </div>
                 <div>
-                    <Field placeholder={"Password"} name={"password"} component={Input}  type={"password"}
-                           validate={[required]} />
+                    <Field placeholder={"Password"} name={"password"} component={Input} type={"password"}
+                           validate={[required]}/>
                 </div>
                 <div>
-                    <Field type={"checkbox"} name={"rememberMe"} component={Input} /> remember me
+                    <Field type={"checkbox"} name={"rememberMe"} component={Input}/> remember me
                 </div>
-                <div className={style.someInputError}>
-                    ERROR
-                </div>
+                {
+                    props.error &&
+                    <div className={style.someInputError}>
+                        {props.error}
+                    </div>
+                }
                 <div>
                     <button>Login</button>
                 </div>
@@ -38,13 +41,13 @@ const Login = (props) => {
     }
 
     if (props.isAuth) {
-        return <Navigate to={"/profile"} />
+        return <Navigate to={"/profile"}/>
     }
 
     return (
         <div>
             <h1>LOGIN</h1>
-            <LoginReduxForm onSubmit={ onSubmit } />
+            <LoginReduxForm onSubmit={onSubmit}/>
         </div>
     )
 }
