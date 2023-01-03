@@ -10,31 +10,39 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
+import {Component} from "react";
+import {connect} from "react-redux";
+import {getAuth} from "./redux/auth-reducer";
 
-const App = (props) => {
+class App extends Component {
+    componentDidMount() {
+        this.props.getAuth();
+    }
+    render() {
 
-  return (
-          <div className="app-wrapper">
-              <HeaderContainer />
-              <Navbar />
-              <div className='app-wrapper-content'>
-                  <Routes>
-                      <Route path="/profile"
-                             element={<ProfileContainer />} />
-                      <Route path="/profile/:userId/*"
-                             element={<ProfileContainer />} />
-                      <Route path="/dialogs/*"
-                             element={<DialogsContainer />} />
-                      <Route path="/news" element={<News />} />
-                      <Route path="/music" element={<Music />} />
-                      <Route path="/settings" element={<Settings />} />
-                      <Route path="/friends" element={<Friends />} />
-                      <Route path="/users" element={<UsersContainer />} />
-                      <Route path="/login" element={<Login />} />
-                  </Routes>
-              </div>
-          </div>
-  );
+        return (
+            <div className="app-wrapper">
+                <HeaderContainer/>
+                <Navbar/>
+                <div className='app-wrapper-content'>
+                    <Routes>
+                        <Route path="/profile"
+                               element={<ProfileContainer/>}/>
+                        <Route path="/profile/:userId/*"
+                               element={<ProfileContainer/>}/>
+                        <Route path="/dialogs/*"
+                               element={<DialogsContainer/>}/>
+                        <Route path="/news" element={<News/>}/>
+                        <Route path="/music" element={<Music/>}/>
+                        <Route path="/settings" element={<Settings/>}/>
+                        <Route path="/friends" element={<Friends/>}/>
+                        <Route path="/users" element={<UsersContainer/>}/>
+                        <Route path="/login" element={<Login/>}/>
+                    </Routes>
+                </div>
+            </div>
+        );
+    }
 }
 
-export default App;
+export default connect(null, {getAuth})(App);
