@@ -10,16 +10,22 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import {Component} from "react";
+import React, {Component} from "react";
 import {connect} from "react-redux";
-import {getAuth} from "./redux/auth-reducer";
+import {setInitializationApp} from "./redux/app-reducer";
+import Preloader from "./components/common/Preloader/Preloader";
 
 class App extends Component {
     componentDidMount() {
-        this.props.getAuth();
+        this.props.setInitializationApp();
     }
+
     render() {
 
+        /*if (!this.props.isInitialization) {
+            return <Preloader />
+        }*/
+        
         return (
             <div className="app-wrapper">
                 <HeaderContainer/>
@@ -30,7 +36,7 @@ class App extends Component {
                                element={<ProfileContainer/>}/>
                         <Route path="/profile/:userId/*"
                                element={<ProfileContainer/>}/>
-                        <Route path="/dialogs/*"
+                        <Route path="/dialogs"
                                element={<DialogsContainer/>}/>
                         <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>
@@ -45,4 +51,8 @@ class App extends Component {
     }
 }
 
-export default connect(null, {getAuth})(App);
+let mapStateToProps = (state) => ({
+    isInitialization: state.app.isInitialization
+})
+
+export default connect(mapStateToProps, {setInitializationApp})(App);
