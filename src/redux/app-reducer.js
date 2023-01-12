@@ -22,8 +22,11 @@ const appReducer = (state = initialState, action) => {
 export const setInitialization = () => ({type: SET_INITIALIZATION});
 
 export const setInitializationApp = () => (dispatch) => {
-    dispatch(getAuth());
-    dispatch(setInitialization());
+    let promise = dispatch(getAuth());
+    Promise.all([promise])
+        .then(() => {
+            dispatch(setInitialization());
+        });
 
 }
 
