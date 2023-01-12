@@ -26,22 +26,24 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_USER_DATA,
-    data: {userId, email, login, isAuth}});
+export const setAuthUserData = (userId, email, login, isAuth) => ({
+    type: SET_USER_DATA,
+    data: {userId, email, login, isAuth}
+});
 
-export const getAuth = () => {
-    return (dispatch) => {
+export const getAuth = () => (dispatch) => {
 
-        usersAPI.getAuth().then(data => {
-            if (data.resultCode === 0) {
-                let {id, email, login} = data.data;
+    return authAPI.getAuth()
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                let {id, email, login} = response.data.data;
                 dispatch(setAuthUserData(id, email, login, true));
             } else {
-                let message = data.messages.length > 0 ? data.messages[0] : "Some error";
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
                 dispatch(stopSubmit("login", {_error: message}));
             }
         });
-    } // thunk
+    // thunk
 } //thunk creator
 
 export const sendAuthorization = (email, password, rememberMe) => {
