@@ -1,27 +1,36 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow, getUsers,
+    follow,
+    requestUsers,
     setPage,
     toggleIsLockedButtons,
     unfollow
 } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
+import {
+    getCurrentPage,
+    getIsFetching,
+    getIsLockedButtons,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers, getUsersHard
+} from "../../redux/users-selectors";
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         if (this.props.users.length === 0) {
 
-            this.props.getUsers(this.props.currentPage, this.props.pageSize); //thunk
+            this.props.requestUsers(this.props.currentPage, this.props.pageSize); //thunk
 
         }
     }
 
     onPageChanged = (pageNumber) => {
 
-        this.props.getUsers(pageNumber, this.props.pageSize); //thunk
+        this.props.requestUsers(pageNumber, this.props.pageSize); //thunk
 
     }
 
@@ -42,15 +51,16 @@ class UsersContainer extends React.Component {
 
 const mapStateToPropsUsers = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        isLockedButtons: state.usersPage.isLockedButtons
+        /*users: getUsers(state),*/
+        users: getUsersHard(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        isLockedButtons: getIsLockedButtons(state)
     }
 }
 
 export default connect(mapStateToPropsUsers, {
-    follow, unfollow, setPage, toggleIsLockedButtons, getUsers
+    follow, unfollow, setPage, toggleIsLockedButtons, requestUsers
 })(UsersContainer);
