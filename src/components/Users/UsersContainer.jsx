@@ -15,7 +15,7 @@ import {
     getIsLockedButtons,
     getPageSize,
     getTotalUsersCount,
-    getUsers
+    getUsers, getUsersHard
 } from "../../redux/users-selectors";
 
 class UsersContainer extends React.Component {
@@ -51,7 +51,8 @@ class UsersContainer extends React.Component {
 
 const mapStateToPropsUsers = (state) => {
     return {
-        users: getUsers(state),
+        /*users: getUsers(state),*/
+        users: getUsersHard(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
