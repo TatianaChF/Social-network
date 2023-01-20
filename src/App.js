@@ -14,6 +14,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {setInitializationApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import ProfileContainerHooks from "./components/Profile/ProfileContainerHooks";
 
 class App extends Component {
     componentDidMount() {
@@ -33,9 +34,9 @@ class App extends Component {
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path="/profile"
-                               element={<ProfileContainer/>}/>
+                               element={<ProfileContainerHooks />}/>
                         <Route path="/profile/:userId/*"
-                               element={<ProfileContainer/>}/>
+                               element={<ProfileContainerHooks />}/>
                         <Route path="/dialogs"
                                element={<DialogsContainer/>}/>
                         <Route path="/news" element={<News/>}/>
