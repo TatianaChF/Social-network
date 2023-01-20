@@ -3,7 +3,6 @@ import Preloader from "../../common/Preloader/Preloader";
 import greenCircle from "../../../assets/images/green.png";
 import redCircle from "../../../assets/images/red.png";
 import defaultAvatar from "../../../assets/images/defaultUser.jpg";
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileStatusHooks from "./ProfileStatus/ProfileStatusHooks";
 
 const ProfileInfo = (props) => {
