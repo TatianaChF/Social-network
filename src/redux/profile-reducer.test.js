@@ -14,4 +14,14 @@ test('increase in the number of posts', () => {
     let newState = profileReducer(state, action);
 
     expect(newState.posts.length).toBe(3);
+
+});
+
+test('message correctness', () => {
+    let action  = addPostActionCreator("Hello everyone!");
+
+    let newState = profileReducer(state, action);
+
+    expect(newState.posts[2].message).toBe("Hello everyone!");
+
 });
