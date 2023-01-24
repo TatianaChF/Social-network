@@ -1,4 +1,4 @@
-import profileReducer, {addPostActionCreator} from "./profile-reducer";
+import profileReducer, {addPostActionCreator, deletePost} from "./profile-reducer";
 
 let state  = {
     posts: [
@@ -23,5 +23,14 @@ test('message correctness', () => {
     let newState = profileReducer(state, action);
 
     expect(newState.posts[2].message).toBe("Hello everyone!");
+
+});
+
+test('decrease in the number of posts after deletion', () => {
+    let action  = deletePost(1);
+
+    let newState = profileReducer(state, action);
+
+    expect(newState.posts.length).toBe(1);
 
 });
