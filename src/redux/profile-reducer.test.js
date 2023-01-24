@@ -34,3 +34,12 @@ test('decrease in the number of posts after deletion', () => {
     expect(newState.posts.length).toBe(1);
 
 });
+
+test('validation of id', () => {
+    let action  = deletePost(1000);
+
+    let newState = profileReducer(state, action);
+
+    expect(newState.posts.length).toBe(2);
+
+});
