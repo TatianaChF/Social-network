@@ -30,7 +30,7 @@ const profileReducer = (state = initialState, action) => {
         case DELETE_POST:
             return {
                 ...state,
-                posts: state.posts.filter( post => post.id !== action.postId ),
+                posts: state.posts.filter(post => post.id !== action.postId),
             }
         case SET_USER_PROFILE:
             return {
@@ -56,36 +56,33 @@ export const setStatus = (status) => ({type: SET_STATUS, status});
 
 // thunk creators
 export const getUserProfile = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
 
-        usersAPI.getUserProfile(userId)
-            .then(data => {
-                dispatch(setUserProfile(data));
-            });
+        let response = await usersAPI.getUserProfile(userId);
 
-    } // thunk
+        dispatch(setUserProfile(response.data));
+
+    }
 }
 
 export const getUserStatus = (userId) => {
-    return (dispatch) => {
-            profileAPI.getStatus(userId)
-            .then(response => {
-                dispatch(setStatus(response.data));
-            });
+    return async (dispatch) => {
+        let response = await profileAPI.getStatus(userId);
 
-    } // thunk
+        dispatch(setStatus(response.data));
+
+    }
 }
 
 export const updateUserStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status)
-            .then(response => {
-                if ( response.data.resultCode === 0 ) {
-                    dispatch(setStatus(status));
-                }
-            });
+    return async (dispatch) => {
+        let response = await profileAPI.updateStatus(status);
 
-    } // thunk
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
+
+    }
 }
 
 export default profileReducer;

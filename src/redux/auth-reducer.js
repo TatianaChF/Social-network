@@ -31,39 +31,40 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
     data: {userId, email, login, isAuth}
 });
 
-export const getAuth = () => (dispatch) => {
+export const getAuth = () => async (dispatch) => {
 
-    return authAPI.getAuth()
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                let {id, email, login} = response.data.data;
-                dispatch(setAuthUserData(id, email, login, true));
-            } else {
-                let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-                dispatch(stopSubmit("login", {_error: message}));
-            }
-        });
-    // thunk
+    let response = await authAPI.getAuth();
+
+    if (response.data.resultCode === 0) {
+        let {id, email, login} = response.data.data;
+        dispatch(setAuthUserData(id, email, login, true));
+    }
+
 } //thunk creator
 
 export const sendAuthorization = (email, password, rememberMe) => {
-    return (dispatch) => {
-        authAPI.sendLogin(email, password, rememberMe).then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(getAuth());
-            }
-        });
-    } // thunk
+    return async (dispatch) => {
+        let response = await authAPI.sendLogin(email, password, rememberMe);
+
+        if (response.data.resultCode === 0) {
+            dispatch(getAuth());
+        } else {
+            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+            dispatch(stopSubmit("login", {_error: message}));
+        }
+
+    }
 } //thunk creator
 
 export const logout = () => {
-    return (dispatch) => {
-        authAPI.logout().then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setAuthUserData(null, null, null, false));
-            }
-        });
-    } // thunk
+    return async (dispatch) => {
+        let response = await authAPI.logout();
+
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null, false));
+        }
+
+    }
 } //thunk creator
 
 export default authReducer;
