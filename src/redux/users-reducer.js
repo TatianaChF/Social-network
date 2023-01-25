@@ -1,12 +1,13 @@
 import {usersAPI} from "../api/api";
+import {updateObjectArray} from "../utils/object-helpers";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USER = 'SET-USER';
-const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
-const TOGGLE_IS_LOCKED_BUTTONS = 'TOGGLE-IS-LOCKED-BUTTONS';
+const FOLLOW = 'social-network/usersPage/FOLLOW';
+const UNFOLLOW = 'social-network/usersPage/UNFOLLOW';
+const SET_USER = 'social-network/usersPage/SET-USER';
+const SET_CURRENT_PAGE = 'social-network/usersPage/SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'social-network/usersPage/ET-TOTAL-USERS-COUNT';
+const TOGGLE_IS_FETCHING = 'social-network/usersPage/TOGGLE-IS-FETCHING';
+const TOGGLE_IS_LOCKED_BUTTONS = 'social-network/usersPage/TOGGLE-IS-LOCKED-BUTTONS';
 
 let initialState = {
     users: [],
@@ -23,22 +24,12 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return {...user, followed: true}
-                    }
-                    return user;
-                })
+                users: updateObjectArray(state.users, action.userId, "id", {followed: true})
             };
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return {...user, followed: false}
-                    }
-                    return user;
-                })
+                users: updateObjectArray(state.users, action.userId, "id", {followed: false})
             };
         case SET_USER:
             return {...state, users: action.users};
@@ -70,45 +61,43 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 export const toggleIsLockedButtons = (isFetching, userId) => ({type: TOGGLE_IS_LOCKED_BUTTONS, isFetching, userId});
 
 export const requestUsers = (page, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
 
         dispatch(toggleIsFetching(true));
         dispatch(setPage(page));
-        usersAPI.getUsers(page, pageSize).then(data => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
-        });
 
-    } // thunk
+        let data = await usersAPI.getUsers(page, pageSize);
+
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUsersCount(data.totalCount));
+
+    }
 } // thunkCreator
 
+const selectFollowUnfollow = async (dispatch, userId, apiMethod, actionCreator) => {
+    dispatch(toggleIsLockedButtons(true, userId));
+
+    let data = await apiMethod(userId);
+
+    dispatch(toggleIsLockedButtons(false, userId));
+    if (data.resultCode === 0) {
+        dispatch(actionCreator(userId));
+    }
+};
+
 export const follow = (userId) => {
-    return (dispatch) => {
-
-        dispatch(toggleIsLockedButtons(true, userId));
-        usersAPI.putStateFollow(userId).then(data => {
-            dispatch(toggleIsLockedButtons(false, userId));
-            if(data.resultCode === 0) {
-                dispatch(followSuccess(userId));
-            }
-        });
-
-    } // thunk
+    return async (dispatch) => {
+        let apiMethod = usersAPI.putStateFollow.bind(usersAPI);
+        selectFollowUnfollow(dispatch, userId, apiMethod, followSuccess);
+    }
 } // thunkCreator
 
 export const unfollow = (userId) => {
-    return (dispatch) => {
-
-        dispatch(toggleIsLockedButtons(true, userId));
-        usersAPI.deleteStateFollow(userId).then(data => {
-            dispatch(toggleIsLockedButtons(false, userId));
-            if(data.resultCode === 0) {
-                dispatch(unfollowSuccess(userId));
-            }
-        });
-
-    } // thunk
+    return async (dispatch) => {
+        let apiMethod = usersAPI.deleteStateFollow.bind(usersAPI);
+        selectFollowUnfollow(dispatch, userId, apiMethod, unfollowSuccess);
+    }
 } // thunkCreator
 
 export default usersReducer;
