@@ -1,4 +1,5 @@
 import {usersAPI} from "../api/api";
+import {updateObjectArray} from "../utils/object-helpers";
 
 const FOLLOW = 'social-network/usersPage/FOLLOW';
 const UNFOLLOW = 'social-network/usersPage/UNFOLLOW';
@@ -23,22 +24,12 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return {...user, followed: true}
-                    }
-                    return user;
-                })
+                users: updateObjectArray(state.users, action.userId, "id", {followed: true})
             };
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return {...user, followed: false}
-                    }
-                    return user;
-                })
+                users: updateObjectArray(state.users, action.userId, "id", {followed: false})
             };
         case SET_USER:
             return {...state, users: action.users};
