@@ -84,33 +84,28 @@ export const requestUsers = (page, pageSize) => {
     }
 } // thunkCreator
 
+const selectFollowUnfollow = async (dispatch, userId, apiMethod, actionCreator) => {
+    dispatch(toggleIsLockedButtons(true, userId));
+
+    let data = await apiMethod(userId);
+
+    dispatch(toggleIsLockedButtons(false, userId));
+    if (data.resultCode === 0) {
+        dispatch(actionCreator(userId));
+    }
+};
+
 export const follow = (userId) => {
     return async (dispatch) => {
-
-        dispatch(toggleIsLockedButtons(true, userId));
-
-        let data = await usersAPI.putStateFollow(userId);
-
-            dispatch(toggleIsLockedButtons(false, userId));
-            if (data.resultCode === 0) {
-                dispatch(followSuccess(userId));
-            }
-
+        let apiMethod = usersAPI.putStateFollow.bind(usersAPI);
+        selectFollowUnfollow(dispatch, userId, apiMethod, followSuccess);
     }
 } // thunkCreator
 
 export const unfollow = (userId) => {
     return async (dispatch) => {
-
-        dispatch(toggleIsLockedButtons(true, userId));
-
-        let data = await usersAPI.deleteStateFollow(userId);
-
-            dispatch(toggleIsLockedButtons(false, userId));
-            if (data.resultCode === 0) {
-                dispatch(unfollowSuccess(userId));
-            }
-
+        let apiMethod = usersAPI.deleteStateFollow.bind(usersAPI);
+        selectFollowUnfollow(dispatch, userId, apiMethod, unfollowSuccess);
     }
 } // thunkCreator
 
