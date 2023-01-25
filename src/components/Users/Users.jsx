@@ -1,45 +1,18 @@
-import styles from "./Users.module.css";
-import userPhoto from "../../assets/images/defaultUser.jpg";
-import {NavLink} from "react-router-dom";
 import Paginator from "../common/Paginator/Paginator"
+import User from "./User";
 
 const Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, users, ...props}) => {
 
     return (
         <div>
             <Paginator totalUsersCount={totalUsersCount} pageSize={pageSize}
-                       currentPage={currentPage} onPageChanged={onPageChanged} />
-            {
-                users.map(user => <div key={user.id}>
-                    <span>
-                        <div>
-                            <NavLink to={"/profile/" + user.id}>
-                                <img src={user.photos.small != null ? user.photos.small : userPhoto}
-                                     className={styles.userPhoto}/>
-                            </NavLink>
-                        </div>
-                        <div>
-                            {user.followed
-                                ? <button disabled={props.isLockedButtons.some(id => id === user.id)} onClick={() => {
-                                    props.unfollow(user.id);
-                                }}>Unfollow</button>
-                                : <button disabled={props.isLockedButtons.some(id => id === user.id)} onClick={() => {
-                                    props.follow(user.id);
-                                }}>Follow</button>}
-                        </div>
-                    </span>
-                    <span>
-                        <span>
-                            <div>{user.name}</div>
-                            <div>{user.status}</div>
-                        </span>
-                        <span>
-                            <div>Moscow</div>
-                            <div>Russia</div>
-                        </span>
-                    </span>
-                </div>)
-            }
+                       currentPage={currentPage} onPageChanged={onPageChanged}/>
+            <div>
+                {
+                    users.map(user => <User user={user} isLockedButtons={props.isLockedButtons} key={user.id}
+                                            unfollow={props.unfollow} follow={props.follow}/>)
+                }
+            </div>
         </div>
     )
 
