@@ -15,22 +15,25 @@ import {
     getIsLockedButtons,
     getPageSize,
     getTotalUsersCount,
-    getUsers, getUsersHard
+    getUsersHard
 } from "../../redux/users-selectors";
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
+        const {currentPage, pageSize} = this.props;
         if (this.props.users.length === 0) {
 
-            this.props.requestUsers(this.props.currentPage, this.props.pageSize); //thunk
+            this.props.requestUsers(currentPage, pageSize); //thunk
 
         }
     }
 
     onPageChanged = (pageNumber) => {
 
-        this.props.requestUsers(pageNumber, this.props.pageSize); //thunk
+        const {pageSize} = this.props;
+
+        this.props.requestUsers(pageNumber, pageSize); //thunk
 
     }
 
