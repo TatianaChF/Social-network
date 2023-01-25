@@ -1,4 +1,6 @@
 import styles from "./FormsControl.module.css";
+import {Field} from "redux-form";
+import {required} from "../../../utils/validations";
 const FormsControl = ({input, meta, child, ...props}) => {
     let hasError = meta.touched && meta.error;
     return (
@@ -17,4 +19,13 @@ export const Textarea = (props) => {
 export const Input = (props) => {
     const {input, meta, ...restProps} = props;
     return <FormsControl {...props}><input {...restProps} {...input} /></FormsControl>
+}
+
+export const createField = (placeholder, name, component, validate, props = {}, text = "") => {
+    return (
+        <div>
+            <Field placeholder={placeholder} name={name}
+                   component={component} validate={validate} {...props} /> {text}
+        </div>
+        )
 }
