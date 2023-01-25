@@ -1,12 +1,12 @@
 import {usersAPI} from "../api/api";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USER = 'SET-USER';
-const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
-const TOGGLE_IS_LOCKED_BUTTONS = 'TOGGLE-IS-LOCKED-BUTTONS';
+const FOLLOW = 'social-network/usersPage/FOLLOW';
+const UNFOLLOW = 'social-network/usersPage/UNFOLLOW';
+const SET_USER = 'social-network/usersPage/SET-USER';
+const SET_CURRENT_PAGE = 'social-network/usersPage/SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'social-network/usersPage/ET-TOTAL-USERS-COUNT';
+const TOGGLE_IS_FETCHING = 'social-network/usersPage/TOGGLE-IS-FETCHING';
+const TOGGLE_IS_LOCKED_BUTTONS = 'social-network/usersPage/TOGGLE-IS-LOCKED-BUTTONS';
 
 let initialState = {
     users: [],
