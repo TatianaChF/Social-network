@@ -5,7 +5,7 @@ const FOLLOW = 'social-network/usersPage/FOLLOW';
 const UNFOLLOW = 'social-network/usersPage/UNFOLLOW';
 const SET_USER = 'social-network/usersPage/SET-USER';
 const SET_CURRENT_PAGE = 'social-network/usersPage/SET-CURRENT-PAGE';
-const SET_TOTAL_USERS_COUNT = 'social-network/usersPage/ET-TOTAL-USERS-COUNT';
+const SET_TOTAL_USERS_COUNT = 'social-network/usersPage/SET-TOTAL-USERS-COUNT';
 const TOGGLE_IS_FETCHING = 'social-network/usersPage/TOGGLE-IS-FETCHING';
 const TOGGLE_IS_LOCKED_BUTTONS = 'social-network/usersPage/TOGGLE-IS-LOCKED-BUTTONS';
 

@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 const User = ({ user, isLockedButtons, unfollow, follow }) => {
 
     return (
-        <div>
+        <div>   
             <span>
                 <div>
                     <NavLink to={"/profile/" + user.id}>
