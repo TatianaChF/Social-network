@@ -11,4 +11,11 @@ describe("ProfileStatus component", () => {
         let span = screen.getByRole("span");
         expect(span).not.toBe(null);
     });
+    test("input must be null", () => {
+        render(<ProfileStatusHooks status="Hello, my friends!" />);
+        expect( () => {
+            screen.getByRole("input")
+        }).toThrow();
+    });
+
 });
