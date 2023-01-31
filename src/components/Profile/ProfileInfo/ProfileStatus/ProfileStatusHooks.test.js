@@ -1,4 +1,4 @@
-import {render, screen} from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import ProfileStatusHooks from "./ProfileStatusHooks";
 
 describe("ProfileStatus component", () => {
@@ -17,5 +17,10 @@ describe("ProfileStatus component", () => {
             screen.getByRole("input")
         }).toThrow();
     });
-
+    test("changing span to input on double click", () => {
+        render(<ProfileStatusHooks status="Hello, my friends!" />);
+        let span = screen.getByRole("span");
+        fireEvent.dblClick(span);
+        expect(screen.getByRole("textbox")).toHaveAttribute("value","Hello, my friends!");
+    });
 });
