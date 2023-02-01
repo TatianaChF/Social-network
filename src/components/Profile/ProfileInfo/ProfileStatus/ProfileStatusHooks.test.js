@@ -23,4 +23,13 @@ describe("ProfileStatus component", () => {
         fireEvent.dblClick(span);
         expect(screen.getByRole("textbox")).toHaveAttribute("value","Hello, my friends!");
     });
+    test("callback should be called", () => {
+        const mockCallback = jest.fn();
+        render(<ProfileStatusHooks status="Hello, my friends!" updateUserStatus={mockCallback} />);
+        let span = screen.getByRole("span");
+        fireEvent.dblClick(span);
+        let input = screen.getByRole("textbox");
+        fireEvent.blur(input);
+        expect(mockCallback.mock.calls.length).toBe(1);
+    });
 });
