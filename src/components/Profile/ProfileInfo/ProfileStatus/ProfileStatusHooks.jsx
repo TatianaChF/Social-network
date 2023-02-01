@@ -15,7 +15,7 @@ const ProfileStatusHooks = (props) => {
 
     const deactivateEditMode = () => {
         setEditMode(false);
-        props.updateUserStatus(status)
+        props.updateUserStatus(status);
     }
 
     const onStatusChange = (element) => {
@@ -26,11 +26,11 @@ const ProfileStatusHooks = (props) => {
         <div>
             {editMode
                 ? <div>
-                    <input onChange={ onStatusChange } autoFocus={ true } onBlur={ deactivateEditMode }
+                    <input role="textbox" onChange={ onStatusChange } autoFocus={ true } onBlur={ deactivateEditMode }
                            value={status} />
                 </div>
                 : <div>
-                    <span onDoubleClick={ activateEditMode } >{ status || "No status" }</span>
+                    <span role="span" onDoubleClick={ activateEditMode } >{ status || "No status" }</span>
                 </div>}
         </div>
     )
