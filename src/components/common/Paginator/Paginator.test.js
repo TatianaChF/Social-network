@@ -6,5 +6,11 @@ describe("Paginator component", () => {
         render(<Paginator totalItemsCount={11} pageSize={1} portionSize={10} />);
         let spans = screen.getAllByRole("span");
         expect(spans.length).toBe(10);
-    })
+    });
+
+    test("if pages count is more then 10 button NEXT should be present", () => {
+        render(<Paginator totalItemsCount={11} pageSize={1} portionSize={10} />);
+        let button = screen.getAllByRole("button");
+        expect(button.length).toBe(1);
+    });
 })
