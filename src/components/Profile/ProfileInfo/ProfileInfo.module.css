@@ -1,8 +1,19 @@
 .descriptionBlock {
     padding: 10px;
+    display: grid;
+    grid-template-columns: 300px 350px;
 }
 
 .bool {
     width: 25px;
     height: 25px;
+}
+
+img {
+    height: 250px;
+    width: 250px;
+}
+
+ul {
+    list-style-type: none;
 }
