@@ -15,6 +15,7 @@ const ProfileInfo = (props) => {
         <div>
             <div className={style.descriptionBlock}>
                 <img src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar} alt="avatar"/>
+                { props.isOwner && <input type={"file"} /> }
                 <div>
                     <h2>Информация</h2>
                     <div>

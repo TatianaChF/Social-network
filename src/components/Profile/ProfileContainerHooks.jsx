@@ -19,7 +19,7 @@ const ProfileContainerHooks = (props) => {
 
     return (
         <Profile {...props} profile={props.profile} status={props.status}
-                 updateUserStatus={props.updateUserStatus}/>
+                 updateUserStatus={props.updateUserStatus} isOwner={!userId} />
     )
 
 
