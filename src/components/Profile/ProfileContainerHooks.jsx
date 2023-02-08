@@ -8,15 +8,14 @@ import {compose} from "redux";
 
 const ProfileContainerHooks = (props) => {
 
-    let [userId, setUserId] = useState(props.router.params.userId);
+    let { userId } = useParams();
 
     useEffect( () => {
-        if (!userId) {
-            setUserId(props.authorizedUserId);
-        }
-        props.getUserProfile(userId); // thunk
-        props.getUserStatus(userId);
-    }, [userId] )
+        let user = !!userId
+        ? userId : props.authorizedUserId;
+        props.getUserProfile(user);
+        props.getUserStatus(user);
+    }, [userId] );
 
     return (
         <Profile {...props} profile={props.profile} status={props.status}
