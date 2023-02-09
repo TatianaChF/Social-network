@@ -11,11 +11,17 @@ const ProfileInfo = (props) => {
         return <Preloader/>
     }
 
+    const onAvatarSelection = (element) => {
+        if (element.target.files.length) {
+            props.savePhoto(element.target.files[0]);
+        }
+    }
+
     return (
         <div>
             <div className={style.descriptionBlock}>
                 <img src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar} alt="avatar"/>
-                { props.isOwner && <input type={"file"} /> }
+                { props.isOwner && <input type={"file"} onChange={onAvatarSelection} /> }
                 <div>
                     <h2>Информация</h2>
                     <div>
