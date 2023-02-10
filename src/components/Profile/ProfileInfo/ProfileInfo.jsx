@@ -24,13 +24,17 @@ const ProfileInfo = (props) => {
         setEditMode(true);
     }
 
+    const onSubmit = (formData) => {
+        props.saveProfile(formData);
+    }
+
     return (
         <div>
             <div className={style.descriptionBlock}>
                 <img src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar} alt="avatar"/>
                 { props.isOwner && <input type={"file"} onChange={onAvatarSelection} /> }
 
-                { editMode ? <ProfileDataForm profile={props.profile} /> : <ProfileData profile={props.profile}
+                { editMode ? <ProfileDataForm profile={props.profile} onSubmit={onSubmit} /> : <ProfileData profile={props.profile}
                                                                                         isOwner={props.isOwner}
                                                                                         goToEditMode={goToEditMode} /> }
 
