@@ -8,15 +8,18 @@ import profile from "../../Profile";
 
 const ProfileDataForm = (props) => {
     return (
-        <form>
-            {props.isOwner && <div>
-                <button onClick={() => {alert("SAVE")}} >save</button>
-            </div>}
+        <form onSubmit={ props.handleSubmit}>
+            <div>
+                <button>
+                    save
+                </button>
+            </div>
             <div>
                 <h2>Information</h2>
                 <div>
                     <div>
-                        <b>Full name</b>: { createField("Full name", "fullName", Input, []) }</div>
+                        <b>Full name</b>: { createField("Full name", "fullName", Input, []) }
+                    </div>
                     <div>
                         <b>Looking for a job</b>: <img src={props.profile.lookingForAJob ? greenCircle : redCircle}
                                                       className={style.bool} alt="status"/>
