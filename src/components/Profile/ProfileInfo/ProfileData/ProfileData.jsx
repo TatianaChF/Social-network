@@ -10,7 +10,6 @@ const ProfileData = (props) => {
             <div>
                 <h2>Information</h2>
                 <div>
-                    <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
                     <p><b>Full name</b>: {props.profile.fullName}</p>
                     <p><b>Looking for a job</b>: <img src={props.profile.lookingForAJob ? greenCircle : redCircle}
                                                       className={style.bool} alt="status"/>
