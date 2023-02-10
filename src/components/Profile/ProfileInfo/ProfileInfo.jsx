@@ -23,14 +23,14 @@ const ProfileInfo = (props) => {
                 <img src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar} alt="avatar"/>
                 { props.isOwner && <input type={"file"} onChange={onAvatarSelection} /> }
                 <div>
-                    <h2>Информация</h2>
+                    <h2>Information</h2>
                     <div>
                         <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
                         <p>Id: {props.profile.userId}</p>
-                        <p>Status: <img src={props.profile.lookingForAJob ? greenCircle : redCircle}
+                        <p>Looking for a job: <img src={props.profile.lookingForAJob ? greenCircle : redCircle}
                                         className={style.bool} alt="status"/>
                         </p>
-                        <p>About the job: {props.profile.lookingForAJobDescription}</p>
+                        <p>My professional skills: {props.profile.lookingForAJobDescription}</p>
                     </div>
                 </div>
                 <div>
