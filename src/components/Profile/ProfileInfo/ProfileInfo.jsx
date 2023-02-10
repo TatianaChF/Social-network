@@ -26,26 +26,27 @@ const ProfileInfo = (props) => {
                     <h2>Information</h2>
                     <div>
                         <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
-                        <p>Id: {props.profile.userId}</p>
-                        <p>Looking for a job: <img src={props.profile.lookingForAJob ? greenCircle : redCircle}
+                        <p><b>Full name</b>: {props.profile.fullName}</p>
+                        <p><b>Looking for a job</b>: <img src={props.profile.lookingForAJob ? greenCircle : redCircle}
                                         className={style.bool} alt="status"/>
                         </p>
-                        <p>My professional skills: {props.profile.lookingForAJobDescription}</p>
+                        <p><b>My professional skills</b>: {props.profile.lookingForAJobDescription}</p>
                     </div>
                 </div>
                 <div>
-                    <ul>
-                        <li>GitHub: {props.profile.contacts.github}</li>
-                        <li>VK: {props.profile.contacts.vk}</li>
-                        <li>Facebook: {props.profile.contacts.facebook}</li>
-                        <li>Instagram: {props.profile.contacts.instagram}</li>
-                        <li>Twitter: {props.profile.contacts.twitter}</li>
-                        <li>Website: {props.profile.contacts.website}</li>
-                        <li>Youtube: {props.profile.contacts.youtube}</li>
-                        <li>Link: {props.profile.contacts.mainLink}</li>
-                    </ul>
+                    <p><b>Contacts: </b></p> { Object.keys(props.profile.contacts).map( key => {
+                    return <Contacts key={key} contactTitle={key} contactValue={props.profile.contacts[key]} />
+                } ) }
                 </div>
             </div>
+        </div>
+    )
+}
+
+const Contacts = ({contactTitle, contactValue}) => {
+    return (
+        <div>
+            <b>{contactTitle}</b>: {contactValue}
         </div>
     )
 }
