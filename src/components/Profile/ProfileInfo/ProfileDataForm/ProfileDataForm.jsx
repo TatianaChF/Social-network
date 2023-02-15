@@ -1,5 +1,6 @@
 import {createField, Input, Textarea} from "../../../common/FormsControl/FormsControl";
 import {reduxForm} from "redux-form";
+import style from './ProfileInfo.module.css';
 
 const ProfileDataForm = (props) => {
     return (
@@ -31,11 +32,15 @@ const ProfileDataForm = (props) => {
                     </div>
                 </div>
             </div>
-            {/*<div>
-                <p><b>Contacts</b>: </p> {Object.keys(props.profile.contacts).map(key => {
-                return <Contacts key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>
+            <div>
+                <div>
+                    <b>Contacts</b>
+                </div>: {Object.keys(props.profile.contacts).map(key => {
+                return <div className={style.contacts}>
+                    <b>{key}</b>: { createField(key, "contacts." + key, Input, []) }
+                </div>
             })}
-            </div>*/}
+            </div>
         </form>
     )
 }
