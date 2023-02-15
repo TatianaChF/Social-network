@@ -34,9 +34,12 @@ const ProfileInfo = (props) => {
                 <img src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar} alt="avatar"/>
                 { props.isOwner && <input type={"file"} onChange={onAvatarSelection} /> }
 
-                { editMode ? <ProfileDataForm profile={props.profile} onSubmit={onSubmit} /> : <ProfileData profile={props.profile}
-                                                                                        isOwner={props.isOwner}
-                                                                                        goToEditMode={goToEditMode} /> }
+                { editMode
+                    ? <ProfileDataForm initialValues={props.profile}
+                                       onSubmit={onSubmit} />
+                    : <ProfileData profile={props.profile}
+                                   isOwner={props.isOwner}
+                                   goToEditMode={goToEditMode} /> }
 
                 <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
             </div>
