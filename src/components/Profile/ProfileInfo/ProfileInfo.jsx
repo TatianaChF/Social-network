@@ -26,6 +26,7 @@ const ProfileInfo = (props) => {
 
     const onSubmit = (formData) => {
         props.saveProfile(formData);
+        setEditMode(false);
     }
 
     return (
