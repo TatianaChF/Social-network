@@ -17,3 +17,9 @@ img {
 .contacts {
     list-style-type: none;
 }
+
+.someInputError {
+    border: solid red 2px;
+    padding: 5px;
+    color: crimson;
+}
