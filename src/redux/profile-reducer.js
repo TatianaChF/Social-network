@@ -115,6 +115,7 @@ export const saveProfile = (profile) => {
         }
         else {
             dispatch(stopSubmit("edit-profile", {_error: response.data.messages[0]}));
+            return Promise.reject(response.data.messages[0]);
         }
 
     }
