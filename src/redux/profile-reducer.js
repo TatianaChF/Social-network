@@ -1,4 +1,5 @@
 import {profileAPI, usersAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'social-network/profilePage/ADD-POST';
 const SET_USER_PROFILE = 'social-network/profilePage/SET-USER-PROFILE';
@@ -111,6 +112,9 @@ export const saveProfile = (profile) => {
 
         if (response.data.resultCode === 0) {
             dispatch(setUserProfile(userId));
+        }
+        else {
+            dispatch(stopSubmit("contacts", {_error: response.data.messages[0]}));
         }
 
     }
