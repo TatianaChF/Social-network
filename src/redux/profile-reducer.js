@@ -114,7 +114,7 @@ export const saveProfile = (profile) => {
             dispatch(setUserProfile(userId));
         }
         else {
-            dispatch(stopSubmit("contacts", {_error: response.data.messages[0]}));
+            dispatch(stopSubmit("edit-profile", {_error: response.data.messages[0]}));
         }
 
     }
