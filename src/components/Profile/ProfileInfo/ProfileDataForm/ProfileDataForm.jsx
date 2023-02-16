@@ -1,15 +1,19 @@
 import {createField, Input, Textarea} from "../../../common/FormsControl/FormsControl";
 import {reduxForm} from "redux-form";
-import style from './ProfileInfo.module.css';
+import style from "./../ProfileInfo.module.css";
 
 const ProfileDataForm = (props) => {
     return (
         <form onSubmit={ props.handleSubmit}>
             <div>
-                <button>
-                    save
-                </button>
+                <button>save</button>
             </div>
+            {
+                props.error &&
+                <div className={style.someInputError}>
+                    {props.error}
+                </div>
+            }
             <div>
                 <h2>Information</h2>
                 <div>
@@ -36,7 +40,7 @@ const ProfileDataForm = (props) => {
                 <div>
                     <b>Contacts</b>
                 </div>: {Object.keys(props.profile.contacts).map(key => {
-                return <div className={style.contacts}>
+                return <div key={key} className={style.contacts}>
                     <b>{key}</b>: { createField(key, "contacts." + key, Input, []) }
                 </div>
             })}
