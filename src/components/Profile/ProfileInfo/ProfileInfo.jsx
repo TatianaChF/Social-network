@@ -33,9 +33,9 @@ const ProfileInfo = ({profile, ...props}) => {
     return (
         <div>
             <div className={style.descriptionBlock}>
-                {/*<img src={profile.photos.large ? profile.photos.large : defaultAvatar} alt="avatar"/>
+                <img src={profile.photos.large ? profile.photos.large : defaultAvatar} alt="avatar"/>
                 { props.isOwner && <input type={"file"} onChange={onAvatarSelection} /> }
-*/}
+
                 { editMode
                     ? <ProfileDataForm initialValues={profile}
                                        profile={profile}
