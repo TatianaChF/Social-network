@@ -107,11 +107,12 @@ export const savePhoto = (photos) => {
 export const saveProfile = (profile) => {
     return async (dispatch, getState) => {
 
+        debugger
         const userId = getState().auth.userId;
         const response = await profileAPI.saveProfile(profile);
 
         if (response.data.resultCode === 0) {
-            dispatch(setUserProfile(userId));
+            dispatch(getUserProfile(userId));
         }
         else {
             dispatch(stopSubmit("edit-profile", {_error: response.data.messages[0]}));
