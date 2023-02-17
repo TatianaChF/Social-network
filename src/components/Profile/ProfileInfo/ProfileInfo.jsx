@@ -6,11 +6,11 @@ import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileDataForm/ProfileDataForm";
 import {useState} from "react";
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile, ...props}) => {
 
     const [editMode, setEditMode] = useState(false);
 
-    if (!props.profile) {
+    if (!profile) {
         return <Preloader/>
     }
 
@@ -33,14 +33,14 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div className={style.descriptionBlock}>
-                <img src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar} alt="avatar"/>
+                {/*<img src={profile.photos.large ? profile.photos.large : defaultAvatar} alt="avatar"/>
                 { props.isOwner && <input type={"file"} onChange={onAvatarSelection} /> }
-
+*/}
                 { editMode
-                    ? <ProfileDataForm initialValues={props.profile}
-                                       profile={props.profile}
+                    ? <ProfileDataForm initialValues={profile}
+                                       profile={profile}
                                        onSubmit={onSubmit} />
-                    : <ProfileData profile={props.profile}
+                    : <ProfileData profile={profile}
                                    isOwner={props.isOwner}
                                    goToEditMode={goToEditMode} /> }
 

@@ -1,14 +1,13 @@
-import ProfileStatusHooks from "../ProfileStatus/ProfileStatusHooks";
 import greenCircle from "../../../../assets/images/green.png";
 import redCircle from "../../../../assets/images/red.png";
 import style from "../ProfileInfo.module.css";
 import Contacts from "../Contacts/Contacts";
 
-const ProfileData = (props) => {
+const ProfileData = ({goToEditMode, ...props}) => {
     return (
         <div>
             {props.isOwner && <div>
-                <button onClick={props.goToEditMode} >edit</button>
+                <button onClick={goToEditMode}>edit</button>
             </div>}
             <div>
                 <h2>Information</h2>
@@ -21,9 +20,11 @@ const ProfileData = (props) => {
                 </div>
             </div>
             <div>
-                <p><b>Contacts: </b></p> {Object.keys(props.profile.contacts).map(key => {
-                return <Contacts key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>
-            })}
+                <b>Contacts</b>: {props.profile.contacts
+                ? Object.keys(props.profile.contacts).map(key => {
+                    return <Contacts key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>
+                })
+                : "undefined"}
             </div>
         </div>
     )
