@@ -9,11 +9,17 @@
     height: 25px;
 }
 
-img {
+.avatar {
     height: 250px;
     width: 250px;
 }
 
-ul {
+.contacts {
     list-style-type: none;
+}
+
+.someInputError {
+    border: solid red 2px;
+    padding: 5px;
+    color: crimson;
 }
