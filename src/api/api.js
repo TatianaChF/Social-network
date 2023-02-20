@@ -60,11 +60,17 @@ export const authAPI = {
         return instance.get('auth/me');
     },
 
-    sendLogin(email, password, rememberMe = false) {
-        return instance.post(`/auth/login`, {email, password, rememberMe});
+    sendLogin(email, password, rememberMe = false, captcha = null) {
+        return instance.post(`/auth/login`, {email, password, rememberMe, captcha});
     }, // server authorization request
 
     logout() {
         return instance.delete(`/auth/login`);
-    } // page exit request
+    }
+}
+
+export const securityAPI = {
+    getCaptcha() {
+        return instance.get('/security/get-captcha-url');
+    }
 }

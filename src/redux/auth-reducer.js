@@ -1,7 +1,8 @@
-import {authAPI} from "../api/api";
+import {authAPI, securityAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'social-network/auth/SET-USER-DATA';
+const GET_CAPTCHA_URL = 'social-network/auth/GET-CAPTCHA-URL';
 
 let initialState = {
     userId: null,
@@ -9,7 +10,7 @@ let initialState = {
     email: null,
     password: null,
     rememberMe: false,
-    captcha: false,
+    captcha: null,
     isAuth: false
 };
 
@@ -17,9 +18,10 @@ const authReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case SET_USER_DATA:
+        case GET_CAPTCHA_URL:
             return {
                 ...state,
-                ...action.data
+                ...action.payload
             }
         default:
             return state;
@@ -28,7 +30,12 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (userId, email, login, isAuth) => ({
     type: SET_USER_DATA,
-    data: {userId, email, login, isAuth}
+    payload: {userId, email, login, isAuth}
+});
+
+export const getCaptchaUrl = (captcha) => ({
+    type: GET_CAPTCHA_URL,
+    payload: {captcha}
 });
 
 export const getAuth = () => async (dispatch) => {
@@ -42,13 +49,16 @@ export const getAuth = () => async (dispatch) => {
 
 } //thunk creator
 
-export const sendAuthorization = (email, password, rememberMe) => {
+export const sendAuthorization = (email, password, rememberMe, captcha) => {
     return async (dispatch) => {
-        let response = await authAPI.sendLogin(email, password, rememberMe);
+        let response = await authAPI.sendLogin(email, password, rememberMe, captcha);
 
         if (response.data.resultCode === 0) {
             dispatch(getAuth());
         } else {
+            if (response.data.resultCode === 10) {
+                dispatch(getCaptcha());
+            }
             let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
             dispatch(stopSubmit("login", {_error: message}));
         }
@@ -64,6 +74,14 @@ export const logout = () => {
             dispatch(setAuthUserData(null, null, null, false));
         }
 
+    }
+} //thunk creator
+
+export const getCaptcha = () => {
+    return async (dispatch) => {
+        const response = await securityAPI.getCaptcha();
+        const captcha = response.data.url;
+        dispatch(getCaptchaUrl(captcha));
     }
 } //thunk creator
 
