@@ -35,7 +35,7 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
 
 export const getCaptchaUrl = (captcha) => ({
     type: GET_CAPTCHA_URL,
-    payload: captcha
+    payload: {captcha}
 });
 
 export const getAuth = () => async (dispatch) => {
@@ -49,9 +49,9 @@ export const getAuth = () => async (dispatch) => {
 
 } //thunk creator
 
-export const sendAuthorization = (email, password, rememberMe) => {
+export const sendAuthorization = (email, password, rememberMe, captcha) => {
     return async (dispatch) => {
-        let response = await authAPI.sendLogin(email, password, rememberMe);
+        let response = await authAPI.sendLogin(email, password, rememberMe, captcha);
 
         if (response.data.resultCode === 0) {
             dispatch(getAuth());
