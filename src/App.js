@@ -48,6 +48,7 @@ class App extends Component {
                             <Route path="/friends" element={<Friends/>}/>
                             <Route path="/users" element={<UsersContainer/>}/>
                             <Route path="/login" element={<Login/>}/>
+                            <Route path="*" element={<div>404 NOT FOUND</div>}/>
                         </Routes>
                     </Suspense>
                 </div>
