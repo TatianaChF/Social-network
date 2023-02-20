@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
-import {HashRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
@@ -64,10 +64,10 @@ let AppContainer = connect(mapStateToProps, {setInitializationApp})(App);
 
 export const MainApp = (props) => {
     return (
-        <HashRouter >
+        <BrowserRouter>
             <Provider store={store}>
                 <AppContainer/>
             </Provider>
-        </HashRouter>
+        </BrowserRouter>
     )
 }
