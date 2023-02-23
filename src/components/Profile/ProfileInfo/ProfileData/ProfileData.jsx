@@ -1,13 +1,13 @@
 import greenCircle from "../../../../assets/images/green.png";
 import redCircle from "../../../../assets/images/red.png";
-import style from "../ProfileInfo.module.css";
+import style from "./ProfileData.module.css";
 import Contacts from "../Contacts/Contacts";
 
 const ProfileData = ({goToEditMode, ...props}) => {
     return (
         <div>
             {props.isOwner && <div>
-                <button onClick={goToEditMode}>edit</button>
+                <button onClick={goToEditMode} className={style.btnEdit}>edit</button>
             </div>}
             <div>
                 <h2>Information</h2>

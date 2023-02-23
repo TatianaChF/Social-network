@@ -1,0 +1,28 @@
+.btnEdit {
+    text-decoration: none;
+    display: inline-block;
+    width: 130px;
+    height: 35px;
+    border-radius: 45px;
+    margin: 10px 20px;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: black;
+    background: #BFC4D6;
+    border-color: #7d808b;
+    transition: .3s;
+}
+
+.btnEdit:hover {
+    background-color: white;
+    border-color: #BFC4D6;
+    color: black;
+}
+
+.bool {
+    width: 25px;
+    height: 25px;
+}
