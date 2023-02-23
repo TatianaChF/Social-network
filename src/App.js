@@ -37,6 +37,8 @@ class App extends Component {
                     <Suspense fallback={<div><Preloader /></div>}>
                         <Routes>
                             <Route exact path="/" element={<Navigate to={'/profile'} /> } />
+                            <Route path="/Social-network"
+                                   element={<ProfileContainerHooks/>}/>
                             <Route path="/profile"
                                    element={<ProfileContainerHooks/>}/>
                             <Route path="/profile/:userId/*"
