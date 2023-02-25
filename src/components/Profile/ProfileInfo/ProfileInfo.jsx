@@ -38,6 +38,9 @@ const ProfileInfo = ({profile, ...props}) => {
                      className={style.avatar}/>
                 { props.isOwner && <input type={"file"} onChange={onAvatarSelection} className={style.photoSelect} /> }
 
+                <ProfileStatusHooks status={props.status}
+                                    updateUserStatus={props.updateUserStatus} />
+
                 { editMode
                     ? <ProfileDataForm initialValues={profile}
                                        profile={profile}
@@ -46,7 +49,7 @@ const ProfileInfo = ({profile, ...props}) => {
                                    isOwner={props.isOwner}
                                    goToEditMode={goToEditMode} /> }
 
-                <ProfileStatusHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+
             </div>
         </div>
     )

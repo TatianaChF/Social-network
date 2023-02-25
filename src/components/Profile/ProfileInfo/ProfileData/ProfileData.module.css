@@ -4,7 +4,6 @@
     width: 130px;
     height: 35px;
     border-radius: 45px;
-    margin: 20px 85px;
     font-size: 11px;
     text-transform: uppercase;
     text-align: center;
@@ -25,4 +24,8 @@
 .bool {
     width: 25px;
     height: 25px;
+}
+
+.data {
+
 }

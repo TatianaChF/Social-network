@@ -5,7 +5,7 @@ import Contacts from "../Contacts/Contacts";
 
 const ProfileData = ({goToEditMode, ...props}) => {
     return (
-        <div>
+        <div className={style.data}>
             {props.isOwner && <div>
                 <button onClick={goToEditMode} className={style.btnEdit}>edit</button>
             </div>}

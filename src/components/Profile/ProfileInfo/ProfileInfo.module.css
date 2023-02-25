@@ -2,6 +2,7 @@
     padding: 10px;
     display: grid;
     grid-template-columns: 300px 350px;
+    grid-template-rows: 100px 100px 300px;
 }
 
 .bool {
@@ -15,6 +16,8 @@
     border-radius: 100px;
     margin-top: 52px;
     margin-left: 52px;
+    grid-column-start: 1;
+    grid-row-start: 1;
 }
 
 .contacts {
@@ -28,5 +31,6 @@
 }
 
 .photoSelect {
-
+    grid-column-start: 1;
+    grid-row-start: 2;
 }
