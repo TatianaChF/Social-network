@@ -1,0 +1,23 @@
+.btnSave {
+    text-decoration: none;
+    display: inline-block;
+    width: 130px;
+    height: 35px;
+    border-radius: 45px;
+    margin: 20px 85px;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: black;
+    background: #BFC4D6;
+    border-color: #7d808b;
+    transition: .3s;
+}
+
+.btnSave:hover {
+    background-color: white;
+    border-color: #BFC4D6;
+    color: black;
+}
